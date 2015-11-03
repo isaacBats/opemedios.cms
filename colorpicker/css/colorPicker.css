@@ -1,0 +1,9 @@
+#The_colorPicker{
+	position:absolute;
+	width:255px;
+	padding-bottom:4px;
+	padding-right:7px;
+	padding-left:7px;
+	background-color:#000000;
+	border:3px solid #4A46B0;
+}

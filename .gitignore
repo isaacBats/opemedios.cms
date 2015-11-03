@@ -1,0 +1,16 @@
+# Se van a ignorar los directorios donde se alojan las imagenes 
+# que se suben al sitio conservando el esquema.
+data/col_fin/pdf/*.*
+data/col_fin/thumbs/*.*
+data/col_fin/*.*
+data/col_pol/pdf/*.*
+data/col_pol/thumbs/*.*
+data/col_pol/*.*
+data/empresas/primera_plana/*.*
+data/empresas/primera_plana/thumbs/*.*
+data/empresas/*.*
+data/financiero/*.*
+data/fuentes/thumbs/*.*
+data/fuentes/*.*
+data/noticias/*.*
+data/primera_plana/*.*

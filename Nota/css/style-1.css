@@ -1,0 +1,89 @@
+/* Menu */
+#main-menu #sf-menu-container > ul > li > a:hover,
+#main-menu #sf-menu-container > ul > li > a.active {
+	border-color: #143966;
+}
+
+@media screen and (max-width : 960px) {
+	#main-menu #sf-menu-container > ul > li > a:hover,
+	#main-menu #sf-menu-container > ul > li > a.active {
+		border-color: transparent !important;
+	}
+}
+
+#main-menu #sf-menu-container > ul > li.current > a {
+	color: #143966;
+}
+
+.sf-menu ul a {
+	background: #143966;
+}
+
+.sf-menu ul a:hover {
+	background-color: #16283d;
+}
+
+/* Read More Button */
+.slider-post-info .more-link a,
+.categories-right .more-link a,
+#top-button a {
+	background-color: rgba(20,57,102, .9) !important;
+	background-color: rgb(20,57,102)\0/ !important;
+}
+
+/* Comment Reply */
+div.comment-reply a.comment-reply-link {
+	color: #143966 !important;
+}
+
+div.comment-reply a.comment-reply-link:hover {
+	color: #16283d !important;
+}
+
+/* Dropcap */
+.dropcap2 span.large-cap {
+	color: #143966;
+}
+
+/* Pagenation Button */
+.pagenation li {
+	border-color: #c3c3c3;
+	color: #000;
+	background: #eee;
+}
+
+.pagenation li.active {
+	color: #fff;
+	background: #143966;
+}
+
+.pagenation li a {
+	color: #000;
+}
+
+.pagenation li.active a {
+	color: #fff;
+}
+
+/* Contact Button */
+.contact-form input[type="submit"] {
+	background: #143966;
+}
+
+/* Tags */
+#sidebar .tagcloud a,
+#sidebar .tags-widget a {
+	background: #143966;
+	color: #fff;
+}
+
+/* Back to Top */
+#top-button a {
+	background-color: rgba(20,57,102, .9);
+	background-color: rgb(20,57,102)\0/;
+}
+
+#top-button a:hover {
+	background-color: rgba(20,57,102, .8) !important;
+	filter:alpha(opacity=80)\0/;
+}
