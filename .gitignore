@@ -17,3 +17,7 @@ data/primera_plana/*.*
 
 #ignorando el archivo de configuracion 
 conf/db_conf.php
+
+#ignorando vendor y composer.phar
+vendor/*
+composer.phar
