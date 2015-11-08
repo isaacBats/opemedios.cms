@@ -68,7 +68,7 @@ else // SI hay cuentas
 
     //headers
     $headers  = "MIME-Version: 1.0\n";
-	$headers .= "Return-Path: <noticias@opemedios.com.mx>\n";
+	  $headers .= "Return-Path: <noticias@opemedios.com.mx>\n";
     $headers .= "Content-type: text/html; charset=utf-8\n"; //iso-8859-1
     $headers .= "From: Noticias OPEMEDIOS <noticias@opemedios.com.mx>";
 	
@@ -925,7 +925,7 @@ if($_POST['tipo_correo'] == 3)
     } // end if isset id_tipo_fuente
     $base->free_result();
     $base->close();
-    header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Se ha enviado la Noticia");
+    header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Se ha enviado la Noticia".$to);
     exit();
 } // end else SI hay cuentas
 ?>
