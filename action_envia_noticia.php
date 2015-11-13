@@ -925,7 +925,7 @@ if($_POST['tipo_correo'] == 3)
     } // end if isset id_tipo_fuente
     $base->free_result();
     $base->close();
-    header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Se ha enviado la Noticia".$to);
+    header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Se ha enviado la Noticia");
     exit();
 } // end else SI hay cuentas
 ?>
