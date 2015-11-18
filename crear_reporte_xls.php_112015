@@ -625,7 +625,6 @@ setlocale(LC_TIME, 'Spanish');
 $htmlcode = '<p>
 <span align="right" style="font-weight: bold; font-size:medium;">Reporte generado el '.strftime('%d de %B del %Y',strtotime( date ( "d-m-Y" , time ()))).'</span><br>
 <span style="font-weight: bold; font-size:large;">I. Par&aacute;metros del Reporte:</span><br><br>
-<p>'.$query.'</p>
 <table border="1" cellspacing="2" cellpadding="2">
 	<tr style="background-color:#fddde0;">
 		<th align="center" colspan="1">Monitoreo efectuado del <strong>'.strftime('%d de %B del %Y',strtotime($fecha1)).'</strong> al <strong>'.strftime('%d de %B del %Y',strtotime($fecha2)).'</strong></th>

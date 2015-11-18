@@ -27,6 +27,8 @@ $base->init();
 $base->execute_query("INSERT IGNORE INTO `asigna` (`id_noticia`, `id_empresa`, `id_tema`, `id_tendencia`)
                                     VALUES (".$_POST['id_noticia'].",".$_POST['id_empresa'].",".$_POST['id_tema'].",".$_POST['id_tendencia'].");");
 									
+									
+
 //Ahora se mandara la noticia por correo a las cuentas seleccionadas
 //
 //Segun el tipo de fuente  al q pertenezca la noticia sera el formato y los datos q se necesiten
@@ -151,6 +153,8 @@ if($_POST['tipo_correo'] == 2)
 	exit();
 	
 } // end  si tipo correo == 2
+
+
 
 // el tipo 3 es parecido al blackberry pero especial para semarnat y sonora
 if($_POST['tipo_correo'] == 3)

@@ -33,8 +33,7 @@ $base->execute_query("INSERT IGNORE INTO `asigna` (`id_noticia`, `id_empresa`, `
 //
 // Se verifica que haya cuentas a quien mandar, si no hay, redireccionamos. Si hay, revisamos que tipo de noticia es para armar el mail
 
-if (isset($_POST['envia']))
-{
+if (isset($_POST['envia'])){
     $arreglo_envia = $_POST['envia']; // contiene las Id de las cuentas a las que se enviara la noticia
     $ncuentas        = count($arreglo_envia);
 }
@@ -67,9 +66,9 @@ else // SI hay cuentas
     $to = join(",", $array_to);
 
     //headers
-    $headers  = "MIME-Version: 1.0\n";
-	  $headers .= "Return-Path: <noticias@opemedios.com.mx>\n";
-    $headers .= "Content-type: text/html; charset=utf-8\n"; //iso-8859-1
+    $headers  = "MIME-Version: 1.0\r\n";
+	  $headers .= "Return-Path: <noticias@opemedios.com.mx>\r\n";
+    $headers .= "Content-type: text/html; charset=utf-8\r\n"; //iso-8859-1
     $headers .= "From: Noticias OPEMEDIOS <noticias@opemedios.com.mx>";
 	
 /////////////////////////////////////////////////////////////////////////////////////////	
