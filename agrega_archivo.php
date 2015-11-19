@@ -106,12 +106,28 @@ $base->close();
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
-                                <td colspan="5" class="label5"><?php if($_GET['mensaje'] != "exito"){ if($_GET['archivo'] = ""){echo "No se selecciono ningun archivo. Puede subir uno ahora o cerrar la ventana";} else {echo "Hubo un error al subir el archivo: ".$_GET['archivo']." Revise que el tamaño no exceda 50 Mb";}} ?></td>
+                                <td colspan="5" class="label5">
+                                    <?php 
+                                        if($_GET['mensaje'] != "exito"){ 
+                                            if($_GET['archivo'] == ""){
+                                                echo "No se selecciono ningun archivo. Puede subir uno ahora o cerrar la ventana";
+                                            }else {
+                                                echo "Hubo un error al subir el archivo: ".$_GET['archivo']." Revise que el tamaño no exceda 50 Mb";
+                                            }
+                                        } 
+                                    ?>
+                                </td>
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
-                                <td colspan="5" class="label4"><?php if($_GET['mensaje'] == "exito"){ echo "El Archivo: ".$_GET['archivo']." se ha Subido correctamente, Puede añadir otro archivo a la noticia, o bien, cierre la ventana";} ?></td>
+                                <td colspan="5" class="label4">
+                                    <?php 
+                                        if($_GET['mensaje'] == "exito"){ 
+                                            echo "El Archivo: ".$_GET['archivo']." se ha Subido correctamente, Puede añadir otro archivo a la noticia, o bien, cierre la ventana";
+                                        } 
+                                    ?>
+                                </td>
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>

@@ -605,7 +605,7 @@ if(isset ($_POST['insertar']) && $_POST['insertar'] == true)
                                    "autor"=>$_POST['autor'],
                                    "fecha"=>date("Y-m-d",mktime(0,0,0,$_POST['fecha_m'],$_POST['fecha_d'],$_POST['fecha_y'])),
 								   "hora_publicacion"=>date("H:i:s",mktime($_POST['hora_HH'],$_POST['hora_MM'],$_POST['hora_SS'],1,1,2000)),
-                                   "comentario"=>$_POST['comentario'],
+                                   "comentario"=>$_POST['comentarios'],
                                    "id_tipo_fuente"=>$_POST['id_tipo_fuente'],
                                    "id_fuente"=>$_POST['id_fuente'],
                                    "id_seccion"=>$_POST['id_seccion'],
