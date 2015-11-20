@@ -126,13 +126,13 @@ if($_POST['tipo_correo'] == 2)
 				}
 				
 				$message = $noticia->getFecha_larga()."<br>".$noticia->getFuente()."<br><br>"
-				          .$noticia->getSintesis()."<br><br><a href=\"http://sistema.opemedios.com.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
+				          .$noticia->getSintesis()."<br><br><a href=\"http://sistema.opemedios.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
 						  
 			    if($issecundarios > 0)
 				{
 					foreach($arreglo_secundarios as $sec) 
 					{
-                        $message.='<br><br><a target="_blank" href="http://sistema.opemedios.com.mx/data/noticias/'.$tipo_carpeta[$noticia->getId_tipo_fuente()].'/'.$sec->getNombre_archivo().'">'.$sec->getNombre().'</a>';  
+                        $message.='<br><br><a target="_blank" href="http://sistema.opemedios.mx/data/noticias/'.$tipo_carpeta[$noticia->getId_tipo_fuente()].'/'.$sec->getNombre_archivo().'">'.$sec->getNombre().'</a>';  
                     }
 				}
 				
@@ -209,13 +209,13 @@ if($_POST['tipo_correo'] == 3)
 					$row = $base->get_row_assoc();
 					$hora = " - ".$row['hora']." hrs.";
 				}
-				$message = $noticia->getFuente().": ".$noticia->getEncabezado()."<br><br>".$noticia->getFecha_larga()." ".$hora."<br><br>".$noticia->getSintesis()."<br><br><a href=\"http://sistema.opemedios.com.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
+				$message = $noticia->getFuente().": ".$noticia->getEncabezado()."<br><br>".$noticia->getFecha_larga()." ".$hora."<br><br>".$noticia->getSintesis()."<br><br><a href=\"http://sistema.opemedios.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
 						  
 			    if($issecundarios > 0)
 				{
 					foreach($arreglo_secundarios as $sec) 
 					{
-                        $message.='<br><br><a target="_blank" href="http://sistema.opemedios.com.mx/data/noticias/'.$tipo_carpeta[$noticia->getId_tipo_fuente()].'/'.$sec->getNombre_archivo().'">'.$sec->getNombre().'</a>';
+                        $message.='<br><br><a target="_blank" href="http://sistema.opemedios.mx/data/noticias/'.$tipo_carpeta[$noticia->getId_tipo_fuente()].'/'.$sec->getNombre_archivo().'">'.$sec->getNombre().'</a>';
                     }
 				}
 				
@@ -314,7 +314,7 @@ if($_POST['tipo_correo'] == 3)
                     $principal = 1;
                     $archivo_principal = new Archivo($base->get_row_assoc());
                     $noticia->setArchivo_principal($archivo_principal);
-					$link = 'http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$archivo_principal->getNombre_archivo();
+					$link = 'http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$archivo_principal->getNombre_archivo();
                 }
 
                 //hacemos consulta para obtener los archivos secundarios  de la noticia
@@ -393,10 +393,10 @@ if($_POST['tipo_correo'] == 3)
 
 									if($principal > 0){
 													$message.='<tr bgcolor="#ffede1">
-                                                        <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Visualizar Archivo </b><a href="http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$archivo_principal->getNombre_archivo().'"> AQUI</a><br></td>
+                                                        <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Visualizar Archivo </b><a href="http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$archivo_principal->getNombre_archivo().'"> AQUI</a><br></td>
                                                                </tr>
 															   <tr bgcolor="#ffede1">
-                                                        <td width="100%" valign="top" colspan="2">&nbsp;<font face="Tahoma" size="1"><b>Liga del archivo:</b><a href="http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$archivo_principal->getNombre_archivo().'">http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$archivo_principal->getNombre_archivo().'</a><br></td>
+                                                        <td width="100%" valign="top" colspan="2">&nbsp;<font face="Tahoma" size="1"><b>Liga del archivo:</b><a href="http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$archivo_principal->getNombre_archivo().'">http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$archivo_principal->getNombre_archivo().'</a><br></td>
                                                                </tr>
 															   ';
 									}
@@ -407,7 +407,7 @@ if($_POST['tipo_correo'] == 3)
                 if(count($noticia->getArchivos_alternos()) > 0){
                     $message.= '                    <b>Archivos Relacionados: </b><br>';
                     foreach($noticia->getArchivos_alternos() as $archivo){
-                        $message.= '                <a href="http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$archivo->getNombre_archivo().'">AQUI</a> <br>';
+                        $message.= '                <a href="http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$archivo->getNombre_archivo().'">AQUI</a> <br>';
                     }
                 }
                              $message.=                         '</td>
@@ -416,7 +416,7 @@ if($_POST['tipo_correo'] == 3)
 																<!-- Compartir Redes Sociales -->
 																<table width="580" border="0">
 																	<tr>
-																	<td><font face="Tahoma" size="2" colspan="2">Compartir en Redes Sociales:&nbsp;<a href="http://sistema.opemedios.com.mx/compartir_noticia.php?id_noticia='.$noticia->getId().'&id_tipo_fuente='.$noticia->getId_tipo_fuente().' " target="_blank"> COMPARTIR</a></font></td>
+																	<td><font face="Tahoma" size="2" colspan="2">Compartir en Redes Sociales:&nbsp;<a href="http://sistema.opemedios.mx/compartir_noticia.php?id_noticia='.$noticia->getId().'&id_tipo_fuente='.$noticia->getId_tipo_fuente().' " target="_blank"> COMPARTIR</a></font></td>
 																	</tr>
 																</table>
 																</div>
@@ -630,11 +630,11 @@ if($_POST['tipo_correo'] == 3)
                                                                         <table width="100%" border="0" cellspacing="4" cellpadding="4">
                                                                             <tr>
                                                                                 <td valign="top" width="112">
-                                                                                    <img src="http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/thumbs/'.$nombre_archivo_principal.'_mailtn.jpg" alt=""><br></td>
+                                                                                    <img src="http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/thumbs/'.$nombre_archivo_principal.'_mailtn.jpg" alt=""><br></td>
                                                                                 <td valign="top">
 																				<font face="Tahoma" size="2" color="red">Clave: <b>'.$noticia->getId().'</b></font><br>
 																				<font face="Tahoma" size="2">
-                                                                                        <font face="Tahoma"><h3><a href="http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$nombre_archivo_principal.'">'.$noticia->getEncabezado().'</a></h3></font>
+                                                                                        <font face="Tahoma"><h3><a href="http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$nombre_archivo_principal.'">'.$noticia->getEncabezado().'</a></h3></font>
                                                                                         '.$noticia->getSintesis().'<br><br>
 																						<!-- aqui va el costo -->																						
 																						<font face="Tahoma" size="2" color="red">Costo/Beneficio: <b>$ '.number_format($noticia->getCosto(),2).'</b></font><br>
@@ -668,7 +668,7 @@ if($_POST['tipo_correo'] == 3)
 																						<!-- Compartir Redes Sociales -->
 																						<table width="580" border="0">
 																							<tr>
-																							<td><font face="Tahoma" size="2" colspan="2">Compartir en Redes Sociales:&nbsp;<a href="http://sistema.opemedios.com.mx/compartir_noticia_prensa.php?id_noticia='.$noticia->getId().'&id_tipo_fuente='.$noticia->getId_tipo_fuente().' " target="_blank"> COMPARTIR</a></font></td>
+																							<td><font face="Tahoma" size="2" colspan="2">Compartir en Redes Sociales:&nbsp;<a href="http://sistema.opemedios.mx/compartir_noticia_prensa.php?id_noticia='.$noticia->getId().'&id_tipo_fuente='.$noticia->getId_tipo_fuente().' " target="_blank"> COMPARTIR</a></font></td>
 																							</tr>
 																						</table>
 																						<br>
@@ -676,11 +676,11 @@ if($_POST['tipo_correo'] == 3)
                                                                                             <tr>
                                                                                                 <td width="80%" valign="top"><font face="Tahoma" size="2">          ';
                                 if($principal > 0){
-                                    $message.=                     'Archivo: <a href="http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$noticia->getArchivo_principal()->getNombre_archivo().'">http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$noticia->getArchivo_principal()->getNombre_archivo().'</a><br>';
+                                    $message.=                     'Archivo: <a href="http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$noticia->getArchivo_principal()->getNombre_archivo().'">http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$noticia->getArchivo_principal()->getNombre_archivo().'</a><br>';
                                 }
 
                                 if($rows_pagina > 0){
-                                    $message.=                     'Página Contendora: <a href="http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$noticia->getArchivo_pagina()->getNombre_archivo().'">http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$noticia->getArchivo_pagina()->getNombre_archivo().'</a><br>';
+                                    $message.=                     'Página Contendora: <a href="http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$noticia->getArchivo_pagina()->getNombre_archivo().'">http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$noticia->getArchivo_pagina()->getNombre_archivo().'</a><br>';
                                 }
 
                                                                       $message.=                       '                                                                                                        
@@ -689,7 +689,7 @@ if($_POST['tipo_correo'] == 3)
                                          if(count($noticia->getArchivos_alternos()) > 0){
                                             $message.= '                    <b>Archivos Relacionados</b><br><br>';
                                             foreach($noticia->getArchivos_alternos() as $archivo){
-                                                $message.= '                <a href="http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$archivo->getNombre_archivo().'">http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$archivo->getNombre_archivo().'</a><br>';
+                                                $message.= '                <a href="http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$archivo->getNombre_archivo().'">http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$archivo->getNombre_archivo().'</a><br>';
                                             }
                                          }
                                                      $message.=                                  '
@@ -846,7 +846,7 @@ if($_POST['tipo_correo'] == 3)
                                         <td>
 										<font face="Tahoma" size="2" color="red">Clave: <b>'.$noticia->getId().'</b></font><br>
                                             <font face="Tahoma" size="2">
-                                                <font face="Tahoma"><h3><a href="http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$archivo_principal->getNombre_archivo().'">'.$noticia->getEncabezado().'</a></h3></font>
+                                                <font face="Tahoma"><h3><a href="http://sistema.opemedios.mx/data/noticias/'.$carpeta.'/'.$archivo_principal->getNombre_archivo().'">'.$noticia->getEncabezado().'</a></h3></font>
                                                 '.$noticia->getSintesis().'<br><br>												
 												<font face="Tahoma" size="2" color="red">Costo/Beneficio: <b>$ '.number_format($noticia->getCosto(),2).'</b></font><br>
                                                 <table width="100%" border="0" cellspacing="2" cellpadding="2">
@@ -874,7 +874,7 @@ if($_POST['tipo_correo'] == 3)
                 if($principal > 0){
                     $message.=                     '<tr bgcolor="#ffede1">
                                                         <td colspan="2" valign="top">&nbsp;<font face="Tahoma" size="1">
-															<a href="http://sistema.opemedios.com.mx/data/noticias/internet/'.$noticia->getArchivo_principal()->getNombre_archivo().'">http://sistema.opemedios.com.mx/data/noticias/internet/'.$noticia->getArchivo_principal()->getNombre_archivo().'</a><br>
+															<a href="http://sistema.opemedios.mx/data/noticias/internet/'.$noticia->getArchivo_principal()->getNombre_archivo().'">http://sistema.opemedios.mx/data/noticias/internet/'.$noticia->getArchivo_principal()->getNombre_archivo().'</a><br>
 														</td>
 													</tr>';
                 }
@@ -883,7 +883,7 @@ if($_POST['tipo_correo'] == 3)
                 if(count($noticia->getArchivos_alternos()) > 0){
 					$message.= '                    <b>Archivos Relacionados</b><br><br>';
 					foreach($noticia->getArchivos_alternos() as $archivo){
-                        $message.= '                <a href="http://sistema.opemedios.com.mx/data/noticias/internet/'.$noticia->getArchivo_principal()->getNombre_archivo().'">http://sistema.opemedios.com.mx/data/noticias/internet/'.$noticia->getArchivo_principal()->getNombre_archivo().'</a> <br>';
+                        $message.= '                <a href="http://sistema.opemedios.mx/data/noticias/internet/'.$noticia->getArchivo_principal()->getNombre_archivo().'">http://sistema.opemedios.mx/data/noticias/internet/'.$noticia->getArchivo_principal()->getNombre_archivo().'</a> <br>';
                     }
                 }
                              $message.=                         '</td>
@@ -892,7 +892,7 @@ if($_POST['tipo_correo'] == 3)
 																<!-- Compartir Redes Sociales -->
 																<table width="580" border="0">
 																	<tr>
-																	<td><font face="Tahoma" size="2" colspan="2">Compartir en Redes Sociales:&nbsp;<a href="http://sistema.opemedios.com.mx/compartir_noticia_internet.php?id_noticia='.$noticia->getId().'&id_tipo_fuente='.$noticia->getId_tipo_fuente().' " target="_blank"> COMPARTIR</a></font></td>
+																	<td><font face="Tahoma" size="2" colspan="2">Compartir en Redes Sociales:&nbsp;<a href="http://sistema.opemedios.mx/compartir_noticia_internet.php?id_noticia='.$noticia->getId().'&id_tipo_fuente='.$noticia->getId_tipo_fuente().' " target="_blank"> COMPARTIR</a></font></td>
 																	</tr>
 																</table>
 																</div><br>
