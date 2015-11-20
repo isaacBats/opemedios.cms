@@ -13,7 +13,9 @@ data/financiero/*.*
 data/fuentes/thumbs/*.*
 data/fuentes/*.*
 data/noticias/*.*
+data/noticias/*
 data/primera_plana/*.*
+data/*
 
 #ignorando el archivo de configuracion 
 conf/db_conf.php
