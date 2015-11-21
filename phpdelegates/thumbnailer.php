@@ -27,7 +27,7 @@ class imaging
         // Find format
         $ext = strtoupper(pathinfo($img, PATHINFO_EXTENSION));
         // JPEG image
-        if(is_file($img) && ($ext == "JPG" OR $ext == "JPEG"))
+        if(is_file($img) && ($ext == "JPG" || $ext == "JPEG"))
         {
             $this->format = $ext;
             $this->img_input = ImageCreateFromJPEG($img);
