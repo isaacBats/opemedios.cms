@@ -271,7 +271,7 @@ function CheckAll()
                         <tr>
                           <td>&nbsp;</td>
                           <?php if ($isprincipal == 1){ ?>
-                          <td colspan="2" class="label2">Archivo Principal: <?php echo '<a target="_blank" href="http://sistema.opemedios.mx/data/noticias/'.$arreglo_carpetas[$noticia->getId_tipo_fuente()].'/'.$principal->getNombre_archivo().'">http://sistema.opemedios.mx/data/noticias/'.$arreglo_carpetas[$noticia->getId_tipo_fuente()].'/'.$principal->getNombre_archivo(); ?></td>
+                          <td colspan="2" class="label2">Archivo Principal: <?php echo '<a target="_blank" href="http://sistema.opemedios.com.mx/data/noticias/'.$arreglo_carpetas[$noticia->getId_tipo_fuente()].'/'.$principal->getNombre_archivo().'">http://sistema.opemedios.com.mx/data/noticias/'.$arreglo_carpetas[$noticia->getId_tipo_fuente()].'/'.$principal->getNombre_archivo(); ?></td>
                           <?php  }  // End If is principal?> 
                         </tr>
                         <tr>
@@ -279,7 +279,7 @@ function CheckAll()
                             <td colspan="2"><span class="label2">Secundarios:<br /> 
                             <?php                     
 							foreach($arreglo_secundarios as $sec) {
-								echo '<a target="_blank" href="http://sistema.opemedios.mx/data/noticias/'.$arreglo_carpetas[$noticia->getId_tipo_fuente()].'/'.$sec->getNombre_archivo().'">http://sistema.opemedios.mx/data/noticias/'.$arreglo_carpetas[$noticia->getId_tipo_fuente()].'/'.$sec->getNombre_archivo().'</a><br>';
+								echo '<a target="_blank" href="http://sistema.opemedios.com.mx/data/noticias/'.$arreglo_carpetas[$noticia->getId_tipo_fuente()].'/'.$sec->getNombre_archivo().'">http://sistema.opemedios.com.mx/data/noticias/'.$arreglo_carpetas[$noticia->getId_tipo_fuente()].'/'.$sec->getNombre_archivo().'</a><br>';
 								
 							}
 
