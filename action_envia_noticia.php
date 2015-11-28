@@ -846,7 +846,7 @@ if($_POST['tipo_correo'] == 3)
                                         <td>
 										<font face="Tahoma" size="2" color="red">Clave: <b>'.$noticia->getId().'</b></font><br>
                                             <font face="Tahoma" size="2">
-                                                <font face="Tahoma"><h3><a href="http://sistema.opemedios.com.mx/data/noticias/internet'.$archivo_principal->getNombre_archivo().'">'.$noticia->getEncabezado().'</a></h3></font>
+                                                <font face="Tahoma"><h3><a href="http://sistema.opemedios.com.mx/data/noticias/internet/'.$archivo_principal->getNombre_archivo().'">'.$noticia->getEncabezado().'</a></h3></font>
                                                 '.$noticia->getSintesis().'<br><br>												
 												<font face="Tahoma" size="2" color="red">Costo/Beneficio: <b>$ '.number_format($noticia->getCosto(),2).'</b></font><br>
                                                 <table width="100%" border="0" cellspacing="2" cellpadding="2">
