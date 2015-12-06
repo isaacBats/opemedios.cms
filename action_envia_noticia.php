@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
  * Action para asignar una noticia al portal de un cliente, a la vez de mandar un correo a todos las cuentas seleccionadas
  *@autor: Josue Morado Manríquez
@@ -18,6 +18,22 @@ include("phpclasses/Seccion.php");
 include("phpclasses/Archivo.php");
 include("phpclasses/Ubicacion.php");
 include("phpdelegates/thumbnailer.php");
+
+/**
+*Libreria para mandar los correos con phpmailer
+*@author Isaac Daniel Batista
+*@date Implementado el 5 de dicuembre de 2015
+*/
+require "lib/PHPMailer/class.phpmailer.php";
+
+$phpmailer = new PHPMailer();
+$phpmailer->isSMTP()
+          ->SMTPAuth = true
+          ->Host = 'email-smtp.us-west-2.amazonaws.com'
+          ->Port = 25
+          ->Username = 'AKIAI5J7FY3GTCNC4UUA'
+          ->Password = 'Ao/BnhPkCPjlKEZx/hvUeX4MBstNR8BNyWPt3X9IOSCK'
+          ->SetFrom('noticias@opemedios.com.mx', 'Noticias OPEMEDIOS');
 
 // iniciamos conexion
 $base = new OpmDB(genera_arreglo_BD());
