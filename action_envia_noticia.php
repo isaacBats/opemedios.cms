@@ -26,14 +26,14 @@ include("phpdelegates/thumbnailer.php");
 */
 require "lib/PHPMailer/class.phpmailer.php";
 
-$phpmailer = new PHPMailer();
-$phpmailer->isSMTP()
-          ->SMTPAuth = true
-          ->Host = 'email-smtp.us-west-2.amazonaws.com'
-          ->Port = 25
-          ->Username = 'AKIAI5J7FY3GTCNC4UUA'
-          ->Password = 'Ao/BnhPkCPjlKEZx/hvUeX4MBstNR8BNyWPt3X9IOSCK'
-          ->SetFrom('noticias@opemedios.com.mx', 'Noticias OPEMEDIOS');
+// $phpmailer = new PHPMailer();
+// $phpmailer->isSMTP()
+//           ->SMTPAuth = true
+//           ->Host = 'email-smtp.us-west-2.amazonaws.com'
+//           ->Port = 25
+//           ->Username = 'AKIAI5J7FY3GTCNC4UUA'
+//           ->Password = 'Ao/BnhPkCPjlKEZx/hvUeX4MBstNR8BNyWPt3X9IOSCK'
+//           ->SetFrom('noticias@opemedios.com.mx', 'Noticias OPEMEDIOS');
 
 // iniciamos conexion
 $base = new OpmDB(genera_arreglo_BD());
