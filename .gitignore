@@ -26,3 +26,6 @@ Connections/bitacora.php
 #ignorando vendor y composer.phar
 vendor/*
 composer.phar
+
+#ignorando .phpintel
+.phpintel/*
