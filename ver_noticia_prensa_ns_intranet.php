@@ -323,30 +323,7 @@ $base->close();
                                         </table></td>
                                         <td width="384" valign="top" class="label2">
 											Costo beneficio: <span class="label5">$ <?php echo number_format($noticia->getCosto(),2); ?></span><br>&nbsp;<br>
-											Tarifas Relacionadas:<br />
-                                            <?php if ($tarifas != 0) { // Muestra solo si hay tarifas ?>
-                                            <table width="380" border="0" align="center">
-                                                <tr class="header2">
-                                                    <td><div align="center">Sección</div></td>
-                                                    <td><div align="center">Tipo Página</div></td>
-                                                    <td><div align="center">Costo Página</div></td>
-                                                    <td><div align="center">Tamaño (%)</div></td>
-                                                    <td><div align="center">Costo Nota</div></td>
-                                                </tr>
-                                                <?php
-                                                foreach ($arreglo_tarifas as  $tarifa_fuente) {
-                                                    echo'<tr class="label1">';
-                                                    echo'<td><div class="label2" align="center">'.$tarifa_fuente->get_seccion()->get_nombre().'</div></td>';
-                                                    echo'<td><div class="label2" align="center">'.$tarifa_fuente->get_tipo_pagina().'</div></td>';
-                                                    echo'<td><div class="label2" align="center">$ '.$tarifa_fuente->get_precio().'</div></td>';
-                                                    echo'<td><div class="label2" align="center"> '.$noticia->getPorcentaje_pagina().' %</div></td>';
-                                                    echo'<td><div class="label5" align="center">$ '.$tarifa_fuente->getPrecio_noticia().'</div></td>';
-                                                    echo'</tr>';
-                                                }
-                                                ?>
-                                            </table>
-                                            <?php } // End If ?>
-                                            <br />
+											<br />
                                             <br />
                                             <?php if ($num_principal != 0) { // Muestra solo si hay archivo principal ?>
                                             <div class="contenedor" id="nota"><a href="<?php echo "data/noticias/".$carpeta_tipo."/".$noticia->getArchivo_principal()->getNombre_archivo()?>" target="_blank"><?php echo '<img src=\''.$thumb_archivo_principal->getThumbnailPath().'\' alt=\'Hacer clic para Agrandar\' title=\'Noticia\'/>';?></a></div>
