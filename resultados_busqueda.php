@@ -319,16 +319,16 @@ $queryString_resultados = sprintf("&totalRows_resultados=%d%s", $totalRows_resul
                     <tr class="label1">
                       <td><div align="center"><img name="icon" src="images/icons/<?php echo $row_resultados['TipoFuente']; ?>.png" /></div></td>
                       <td><div align="center"><span class="label5"><a href="<?php echo "ver_noticia_selector.php?id_noticia=".$row_resultados['Clave']."&id_tipo_fuente=".$row_resultados['TipoFuente']; ?>"><?php echo $row_resultados['Clave']; ?></a></span> <br />
-                        <?php echo $row_resultados['Encabezado']; ?></div></td>
-                      <td><div align="center" class="label2"><?php echo $row_resultados['SintesisNoticia']; ?></div></td>
-                      <td><div align="center"><?php echo $row_resultados['AutorNoticia']; ?></div></td>
+                        <?php echo utf8_encode($row_resultados['Encabezado']); ?></div></td>
+                      <td><div align="center" class="label2"><?php echo utf8_encode($row_resultados['SintesisNoticia']); ?></div></td>
+                      <td><div align="center"><?php echo utf8_encode($row_resultados['AutorNoticia']); ?></div></td>
                       <td width="90"><div align="center"><?php echo $row_resultados['Fecha']; ?></div>
                       <div align="center"><br />
                         <img name="logo" src="data/fuentes/<?php echo $row_resultados['LogoFuente']; ?>" width="64" height="40"/><br />
-                        <?php echo $row_resultados['NombreFuente']; ?><br />
+                        <?php echo utf8_encode($row_resultados['NombreFuente']); ?><br />
                         <br />
                           <span class="label2">Sección:<br />
-                          <?php echo $row_resultados['NombreSeccion']; ?></span></div>
+                          <?php echo utf8_encode($row_resultados['NombreSeccion']); ?></span></div>
                       </td>
                       <td>
                       <?php echo $msjenviado; ?>
