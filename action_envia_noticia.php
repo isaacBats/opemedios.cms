@@ -149,7 +149,7 @@ if($_POST['tipo_correo'] == 2)
 				}
 				
 				$message = $noticia->getFecha_larga()."<br>".$noticia->getFuente()."<br><br>"
-				          .utf8_encode($noticia->getSintesis())."<br><br><a href=\"http://sistema.opemedios.com.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
+				          .utf8_decode($noticia->getSintesis())."<br><br><a href=\"http://sistema.opemedios.com.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
 						  
 			    if($issecundarios > 0)
 				{
@@ -235,7 +235,7 @@ if($_POST['tipo_correo'] == 3)
 					$row = $base->get_row_assoc();
 					$hora = " - ".$row['hora']." hrs.";
 				}
-				$message = $noticia->getFuente().": ".$noticia->getEncabezado()."<br><br>".$noticia->getFecha_larga()." ".$hora."<br><br>".utf8_encode($noticia->getSintesis())."<br><br><a href=\"http://sistema.opemedios.com.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
+				$message = $noticia->getFuente().": ".$noticia->getEncabezado()."<br><br>".$noticia->getFecha_larga()." ".$hora."<br><br>".utf8_decode($noticia->getSintesis())."<br><br><a href=\"http://sistema.opemedios.com.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
 						  
 			    if($issecundarios > 0)
 				{
@@ -396,7 +396,7 @@ if($_POST['tipo_correo'] == 3)
                                             <font face="Tahoma" size="2">
 
                                                 <font face="Tahoma"><h3><a href="'.$link.'">'.$noticia->getEncabezado().'</a></h3></font>
-                                                '.utf8_encode($noticia->getSintesis()).'<br><br>
+                                                '.utf8_decode($noticia->getSintesis()).'<br><br>
 												
 												<font face="Tahoma" size="2" color="red">Costo/Beneficio: <b>$ '.number_format($noticia->getCosto(),2).'</b></font><br>												
                                                 <table width="100%" border="0" cellspacing="2" cellpadding="2">
@@ -667,7 +667,7 @@ if($_POST['tipo_correo'] == 3)
 																				<font face="Tahoma" size="2" color="red">Clave: <b>'.$noticia->getId().'</b></font><br>
 																				<font face="Tahoma" size="2">
                                                                                         <font face="Tahoma"><h3><a href="http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$nombre_archivo_principal.'">'.$noticia->getEncabezado().'</a></h3></font>
-                                                                                        '.utf8_encode($noticia->getSintesis()).'<br><br>
+                                                                                        '.utf8_decode($noticia->getSintesis()).'<br><br>
 																						<!-- aqui va el costo -->																						
 																						<font face="Tahoma" size="2" color="red">Costo/Beneficio: <b>$ '.number_format($noticia->getCosto(),2).'</b></font><br>
                                                                                         </td>
@@ -879,7 +879,7 @@ if($_POST['tipo_correo'] == 3)
 										<font face="Tahoma" size="2" color="red">Clave: <b>'.$noticia->getId().'</b></font><br>
                                             <font face="Tahoma" size="2">
                                                 <font face="Tahoma"><h3><a href="http://sistema.opemedios.com.mx/data/noticias/internet/'.$archivo_principal->getNombre_archivo().'">'.$noticia->getEncabezado().'</a></h3></font>
-                                                '.utf8_encode($noticia->getSintesis()).'<br><br>												
+                                                '.utf8_decode($noticia->getSintesis()).'<br><br>												
 												<font face="Tahoma" size="2" color="red">Costo/Beneficio: <b>$ '.number_format($noticia->getCosto(),2).'</b></font><br>
                                                 <table width="100%" border="0" cellspacing="2" cellpadding="2">
                                                     <tr bgcolor="#ffede1">
