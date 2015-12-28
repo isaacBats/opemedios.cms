@@ -24,16 +24,23 @@ include("phpdelegates/thumbnailer.php");
 *@author Isaac Daniel Batista
 *@date Implementado el 5 de dicuembre de 2015
 */
-require "lib/PHPMailer/class.phpmailer.php";
+require 'lib/PHPMailer/PHPMailerAutoload.php';
 
-// $phpmailer = new PHPMailer();
-// $phpmailer->isSMTP()
-//           ->SMTPAuth = true
-//           ->Host = 'email-smtp.us-west-2.amazonaws.com'
-//           ->Port = 25
-//           ->Username = 'AKIAI5J7FY3GTCNC4UUA'
-//           ->Password = 'Ao/BnhPkCPjlKEZx/hvUeX4MBstNR8BNyWPt3X9IOSCK'
-//           ->SetFrom('noticias@opemedios.com.mx', 'Noticias OPEMEDIOS');
+date_default_timezone_set("Mexico/General");
+
+$usermail = 'AKIAI5J7FY3GTCNC4UUA';
+$passmail = 'Ao/BnhPkCPjlKEZx/hvUeX4MBstNR8BNyWPt3X9IOSCK';
+
+$phpmailer = new PHPMailer();
+$phpmailer->isSMTP();
+$phpmailer->SMTPAuth = true;
+$phpmailer->SMTPSecure = "ssl";
+$phpmailer->Host = 'email-smtp.us-west-2.amazonaws.com';
+$phpmailer->Port = 465;
+$phpmailer->Username = $usermail;
+$phpmailer->Password = $passmail;
+$phpmailer->CharSet = 'UTF-8';
+$phpmailer->SetFrom('noticias@opemedios.com.mx', 'Noticias OPEMEDIOS');
 
 // iniciamos conexion
 $base = new OpmDB(genera_arreglo_BD());
@@ -123,7 +130,7 @@ if($_POST['tipo_correo'] == 2)
                 else{
                     $principal = 1;
                     $archivo_principal = new Archivo($base->get_row_assoc());
-                    $noticia->setArchivo_principal($archivo_principal);
+//                   subject $noticia->setArchivo_principal($archivo_principal);
                 }
 				
 				$base->execute_query("SELECT * FROM adjunto WHERE id_noticia = ".$noticia->getId()." AND principal = 0;");
@@ -142,7 +149,7 @@ if($_POST['tipo_correo'] == 2)
 				}
 				
 				$message = $noticia->getFecha_larga()."<br>".$noticia->getFuente()."<br><br>"
-				          .$noticia->getSintesis()."<br><br><a href=\"http://sistema.opemedios.com.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
+				          .utf8_encode($noticia->getSintesis())."<br><br><a href=\"http://sistema.opemedios.com.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
 						  
 			    if($issecundarios > 0)
 				{
@@ -151,17 +158,20 @@ if($_POST['tipo_correo'] == 2)
                         $message.='<br><br><a target="_blank" href="http://sistema.opemedios.com.mx/data/noticias/'.$tipo_carpeta[$noticia->getId_tipo_fuente()].'/'.$sec->getNombre_archivo().'">'.$sec->getNombre().'</a>';  
                     }
 				}
-				
-						  
-				
-				 $subject = $noticia->getEncabezado();
-
-        mail($to, $subject, $message, $headers);
-
+							
+				foreach($arreglo_cuentas as $cuenta)
+        {
+          $phpmailer->addAddress($cuenta->get_email(), $cuenta->get_nombre_completo());
+        }
+        $phpmailer->Subject = $noticia->getEncabezado(); 
+        $phpmailer->msgHTML($message);
 
     $base->free_result();
     $base->close();
-    header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Se ha enviado la Noticia(Correo Sencillo)");
+    if($phpmailer->Send())
+      header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Se ha enviado la Noticia(Correo Sencillo)");
+    else
+      header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Error al enviar la Noticia(Correo Sencillo) ".$phpmailer->ErrorInfo );
 		
 	exit();
 	
@@ -225,7 +235,7 @@ if($_POST['tipo_correo'] == 3)
 					$row = $base->get_row_assoc();
 					$hora = " - ".$row['hora']." hrs.";
 				}
-				$message = $noticia->getFuente().": ".$noticia->getEncabezado()."<br><br>".$noticia->getFecha_larga()." ".$hora."<br><br>".$noticia->getSintesis()."<br><br><a href=\"http://sistema.opemedios.com.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
+				$message = $noticia->getFuente().": ".$noticia->getEncabezado()."<br><br>".$noticia->getFecha_larga()." ".$hora."<br><br>".utf8_encode($noticia->getSintesis())."<br><br><a href=\"http://sistema.opemedios.com.mx/data/noticias/".$tipo_carpeta[$noticia->getId_tipo_fuente()]."/".$archivo_principal->getNombre_archivo()."\">".$archivo_principal->getNombre()."</a>";
 						  
 			    if($issecundarios > 0)
 				{
@@ -234,17 +244,23 @@ if($_POST['tipo_correo'] == 3)
                         $message.='<br><br><a target="_blank" href="http://sistema.opemedios.com.mx/data/noticias/'.$tipo_carpeta[$noticia->getId_tipo_fuente()].'/'.$sec->getNombre_archivo().'">'.$sec->getNombre().'</a>';
                     }
 				}
-				
-						  
-				
-				 $subject = $noticia->getFuente().": ".$noticia->getEncabezado();
 
-        mail($to, $subject, $message, $headers);
+        foreach($arreglo_cuentas as $cuenta)
+        {
+          $phpmailer->addAddress($cuenta->get_email(), $cuenta->get_nombre_completo());
+        }
 
+
+        $phpmailer->Subject = $noticia->getEncabezado(); 
+        $phpmailer->msgHTML($message);
 
     $base->free_result();
     $base->close();
-    header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Se ha enviado la Noticia(Formato para Semarnat)");
+    if($phpmailer->Send())
+      header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Se ha enviado la Noticia(Formato para Semarnat)");
+    else
+      header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Error al enviar la Noticia(Formato para Semarnat) ".$phpmailer->ErrorInfo );
+    
 		
 	exit();
 	
@@ -380,7 +396,7 @@ if($_POST['tipo_correo'] == 3)
                                             <font face="Tahoma" size="2">
 
                                                 <font face="Tahoma"><h3><a href="'.$link.'">'.$noticia->getEncabezado().'</a></h3></font>
-                                                '.$noticia->getSintesis().'<br><br>
+                                                '.utf8_encode($noticia->getSintesis()).'<br><br>
 												
 												<font face="Tahoma" size="2" color="red">Costo/Beneficio: <b>$ '.number_format($noticia->getCosto(),2).'</b></font><br>												
                                                 <table width="100%" border="0" cellspacing="2" cellpadding="2">
@@ -651,7 +667,7 @@ if($_POST['tipo_correo'] == 3)
 																				<font face="Tahoma" size="2" color="red">Clave: <b>'.$noticia->getId().'</b></font><br>
 																				<font face="Tahoma" size="2">
                                                                                         <font face="Tahoma"><h3><a href="http://sistema.opemedios.com.mx/data/noticias/'.$carpeta.'/'.$nombre_archivo_principal.'">'.$noticia->getEncabezado().'</a></h3></font>
-                                                                                        '.$noticia->getSintesis().'<br><br>
+                                                                                        '.utf8_encode($noticia->getSintesis()).'<br><br>
 																						<!-- aqui va el costo -->																						
 																						<font face="Tahoma" size="2" color="red">Costo/Beneficio: <b>$ '.number_format($noticia->getCosto(),2).'</b></font><br>
                                                                                         </td>
@@ -863,7 +879,7 @@ if($_POST['tipo_correo'] == 3)
 										<font face="Tahoma" size="2" color="red">Clave: <b>'.$noticia->getId().'</b></font><br>
                                             <font face="Tahoma" size="2">
                                                 <font face="Tahoma"><h3><a href="http://sistema.opemedios.com.mx/data/noticias/internet/'.$archivo_principal->getNombre_archivo().'">'.$noticia->getEncabezado().'</a></h3></font>
-                                                '.$noticia->getSintesis().'<br><br>												
+                                                '.utf8_encode($noticia->getSintesis()).'<br><br>												
 												<font face="Tahoma" size="2" color="red">Costo/Beneficio: <b>$ '.number_format($noticia->getCosto(),2).'</b></font><br>
                                                 <table width="100%" border="0" cellspacing="2" cellpadding="2">
                                                     <tr bgcolor="#ffede1">
@@ -934,13 +950,26 @@ if($_POST['tipo_correo'] == 3)
                 break;
             
         } // end switch
-        $subject = $noticia->getEncabezado();
-		//$subject = iconv_mime_encode('Subject:',$subject); 
-        mail($to, $subject, $message, $headers);
+        foreach($arreglo_cuentas as $cuenta)
+        {
+          $phpmailer->addAddress($cuenta->get_email(), $cuenta->get_nombre_completo());
+        }
+
+
+        $phpmailer->Subject = $noticia->getEncabezado(); 
+        $phpmailer->msgHTML($message);
+        
     } // end if isset id_tipo_fuente
+
+
     $base->free_result();
     $base->close();
-    header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Se ha enviado la Noticia");
+
+    if($phpmailer->Send())
+       header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Se ha enviado la Noticia");
+    else
+       header("Location: envia_noticia.php?id_noticia=".$_POST['id_noticia']."&mensaje=Error al enviar la Noticia ".$phpmailer->ErrorInfo );
+
     exit();
 } // end else SI hay cuentas
 ?>
