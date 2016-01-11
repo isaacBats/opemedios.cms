@@ -25,6 +25,8 @@ include("phpdelegates/thumbnailer.php");
 *@date Implementado el 5 de dicuembre de 2015
 */
 require 'lib/PHPMailer/PHPMailerAutoload.php';
+require 'lib/PHPMailer/class.phpmailer.php';
+require 'lib/PHPMailer/class.smtp.php';
 
 date_default_timezone_set("Mexico/General");
 
