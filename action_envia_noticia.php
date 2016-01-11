@@ -38,7 +38,7 @@ $phpmailer->isSMTP();
 $phpmailer->SMTPAuth = true;
 $phpmailer->SMTPSecure = "ssl";
 $phpmailer->Host = 'email-smtp.us-west-2.amazonaws.com';
-$phpmailer->Port = 587;
+$phpmailer->Port = 465;
 $phpmailer->Username = $usermail;
 $phpmailer->Password = $passmail;
 $phpmailer->CharSet = 'UTF-8';
