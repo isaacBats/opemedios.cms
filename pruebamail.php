@@ -3,6 +3,7 @@
 //include ("lib/PHPMailer/class.phpmailer.php");
 //include ("lib/PHPMailer/class.smtp.php");
 require 'lib/PHPMailer/PHPMailerAutoload.php';
+require 'conf/MailConfig.php';
 
 
 $correos = array(
@@ -10,6 +11,8 @@ $correos = array(
 	'prueba@opemedios.com.mx', 
 	'daniel@carlos-villicana-davila.com.mx'
 );
+
+$mailConf = new MailConfig();
 
 
 
@@ -20,11 +23,11 @@ $phpmailer = new PHPMailer();
 $phpmailer->isSMTP();
 $phpmailer->SMTPAuth = true;
 $phpmailer->SMTPSecure = "ssl";
-$phpmailer->Host = 'email-smtp.us-west-2.amazonaws.com';
+$phpmailer->Host = $mailConf->getHost();
 //$phpmailer->Host = "smtp.gmail.com";
 $phpmailer->Port = 465;
-$phpmailer->Username = 'AKIAI5J7FY3GTCNC4UUA';
-$phpmailer->Password = 'Ao/BnhPkCPjlKEZx/hvUeX4MBstNR8BNyWPt3X9IOSCK';
+$phpmailer->Username = $mailConf->getUser();
+$phpmailer->Password = $mailConf->getPassword();
 $phpmailer->CharSet = 'UTF-8';
 //$phpmailer->Username = 'noticias.opemedios@gmail.com';
 //$phpmailer->Password = 'noti1234';

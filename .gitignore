@@ -17,8 +17,9 @@ data/noticias/*
 data/primera_plana/*.*
 data/*
 
-#ignorando el archivo de configuracion 
+#ignorando archivos de configuracion 
 conf/db_conf.php
+conf/MailConfig.php
 
 #ignorando la bitacora
 Connections/bitacora.php

@@ -25,20 +25,20 @@ include("phpdelegates/thumbnailer.php");
 *@date Implementado el 5 de dicuembre de 2015
 */
 require 'lib/PHPMailer/PHPMailerAutoload.php';
+require 'conf/MailConfg.php';
 
 date_default_timezone_set("Mexico/General");
 
-$usermail = 'AKIAI5J7FY3GTCNC4UUA';
-$passmail = 'Ao/BnhPkCPjlKEZx/hvUeX4MBstNR8BNyWPt3X9IOSCK';
+$confMail = new MailConfig();
 
 $phpmailer = new PHPMailer();
 $phpmailer->isSMTP();
 $phpmailer->SMTPAuth = true;
 $phpmailer->SMTPSecure = "ssl";
-$phpmailer->Host = 'email-smtp.us-west-2.amazonaws.com';
+$phpmailer->Host = $confMail->getHost();
 $phpmailer->Port = 465;
-$phpmailer->Username = $usermail;
-$phpmailer->Password = $passmail;
+$phpmailer->Username = $confMail->getUser();
+$phpmailer->Password = $confMail->getPassword();
 $phpmailer->CharSet = 'UTF-8';
 $phpmailer->SetFrom('noticias@opemedios.com.mx', 'Noticias OPEMEDIOS');
 
