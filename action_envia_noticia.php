@@ -26,7 +26,6 @@ include("phpdelegates/thumbnailer.php");
 */
 require 'lib/PHPMailer/PHPMailerAutoload.php';
 require 'conf/MailConfg.php';
-
 date_default_timezone_set("Mexico/General");
 
 $confMail = new MailConfig();
