@@ -30,3 +30,6 @@ composer.phar
 
 #ignorando .phpintel
 .phpintel/*
+
+#archivos de autoguardado 
+.fuse_hidden*
