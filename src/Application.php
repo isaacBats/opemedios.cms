@@ -26,8 +26,9 @@ class Application
 
         $router->get('/', HomeController::class . '@index');
         
-        $response = $router->dispatch(Request::capture());
+        
 
+        $response = $router->dispatch(Request::capture());
         $response->send();
     }
 }
