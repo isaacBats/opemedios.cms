@@ -3,16 +3,14 @@
 namespace Opemedios\Http\Controllers;
 
 
-/*use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Opemedios\Http\Views\View;*/
 
+use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Opemedios\Http\Views\View;
 
 
 //class HomeController extends Controller{
-class HomeController {
+class HomeController extends Controller{
 
 	
 	public function index(Request $request){
