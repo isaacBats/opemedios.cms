@@ -25,6 +25,7 @@ class Application
         );
 
         $router->get('/', HomeController::class . '@index');
+        $router->get('/hola', HomeController::class . '@hola');
         
         
 

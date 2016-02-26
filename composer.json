@@ -14,7 +14,8 @@
         "illuminate/view": "^5.2",
         "illuminate/routing": "^5.2",
         "illuminate/database": "^5.2",
-        "twbs/bootstrap": "^3.3"
+        "twbs/bootstrap": "^3.3",
+        "windwalker/renderer": "^2.1"
     },
     "autoload":{
         "psr-4":{

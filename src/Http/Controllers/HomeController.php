@@ -6,6 +6,7 @@ namespace Opemedios\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Opemedios\Http\Views\View;
+use Opemedios\Http\Views\ViewBlade;
 
 
 class HomeController extends BaseController{
@@ -22,5 +23,16 @@ class HomeController extends BaseController{
 		$response->send();
 
 		$this->footer();
+	}
+
+	public function hola(Request $request){
+
+		$view = new ViewBlade();
+		
+		$renderer = $view->renderBlade();
+		
+		return $renderer->render('layout', [
+			'message' => 'Hello from Blade'
+		]);
 	}
 }
