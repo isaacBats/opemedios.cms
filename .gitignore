@@ -33,3 +33,6 @@ composer.phar
 
 #archivos de autoguardado 
 .fuse_hidden*
+
+#cache de blade
+resources/cache

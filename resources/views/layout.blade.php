@@ -6,6 +6,8 @@
 </head>
 <body>
 	<h1>Welcome whit Blade Template</h1>
-	<p>{{ $message }}</p>
+	<div class="container">
+            @yield('content')
+    </div>
 </body>
 </html>

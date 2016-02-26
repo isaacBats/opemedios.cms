@@ -29,9 +29,9 @@ class HomeController extends BaseController{
 
 		$view = new ViewBlade();
 		
-		$renderer = $view->renderBlade();
+		$renderer = $view->render();
 		
-		return $renderer->render('layout', [
+		return $renderer->render('hola', [
 			'message' => 'Hello from Blade'
 		]);
 	}
