@@ -7,6 +7,7 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
 use Opemedios\Http\Controllers\HomeController;
+use Opemedios\Http\Controllers\NewController;
 
 class Application
 {
@@ -24,8 +25,8 @@ class Application
             $this->container
         );
 
-        $router->get('/', HomeController::class . '@index');
-        $router->get('/hola', HomeController::class . '@hola');
+        $router->get('/panel', HomeController::class . '@index');
+        $router->get('/panel/new/add', NewController::class . '@add');
         
         
 

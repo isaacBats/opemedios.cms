@@ -13,26 +13,10 @@ class HomeController extends BaseController{
 
 	public function index(Request $request){
 
-		$this->head();
-		
-		$view = new View('home', [
-			'message' => 'Hello from a View'
-		]);
-
-		$response = $view->render();		
-		$response->send();
-
-		$this->footer();
-	}
-
-	public function hola(Request $request){
-
 		$view = new ViewBlade();
 		
 		$renderer = $view->render();
 		
-		return $renderer->render('hola', [
-			'message' => 'Hello from Blade'
-		]);
+		return $renderer->render('index');
 	}
 }
