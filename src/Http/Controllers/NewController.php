@@ -11,7 +11,7 @@ class NewController extends BaseController{
 		$view = new ViewBlade();
 		
 		$renderer = $view->render();
-		
+
 		return $renderer->render('addNew');
 	}
 

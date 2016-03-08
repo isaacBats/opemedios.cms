@@ -5,7 +5,6 @@ namespace Opemedios\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use Opemedios\Http\Views\View;
 use Opemedios\Http\Views\ViewBlade;
 
 

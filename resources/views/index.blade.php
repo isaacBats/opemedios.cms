@@ -3,10 +3,10 @@
 @section('css')
 
     <!-- Timeline CSS -->
-    <link href="/resources/assets/css/timeline.css" rel="stylesheet">
+    <link href="/assets/css/timeline.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="/resources/assets/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <link href="/assets/bower_components/morrisjs/morris.css" rel="stylesheet">
 
 @stop
 
@@ -555,9 +555,9 @@
 @section('javaScripts')
 
     <!-- Morris Charts JavaScript -->
-    <script src="/resources/assets/bower_components/raphael/raphael-min.js"></script>
-    <script src="/resources/assets/bower_components/morrisjs/morris.min.js"></script>
-    <script src="/resources/assets/js/morris-data.js"></script>
+    <script src="/assets/bower_components/raphael/raphael-min.js"></script>
+    <script src="/assets/bower_components/morrisjs/morris.min.js"></script>
+    <script src="/assets/js/morris-data.js"></script>
 
 
 @stop
