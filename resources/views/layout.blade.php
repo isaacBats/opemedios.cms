@@ -277,10 +277,27 @@
                             <a href="/panel"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-plus-square-o fa-fw"></i> Noticias<span class="fa arrow"></span></a>
+                            <a href="javascript:void(0)"><i class="fa fa-plus-square-o fa-fw"></i> Noticias<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/panel/new/add">Agregar Noticia</a>
+                                    <a href="javascript:void(0)">Agregar Noticia <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href=""><i class="fa fa-youtube-play fa-fw"></i> Televisión</a>
+                                        </li>
+                                        <li>
+                                            <a href=""><i class="fa fa-headphones fa-fw"></i> Radio</a>
+                                        </li>
+                                        <li>
+                                            <a href=""><i class="fa fa-newspaper-o fa-fw"></i> Periodico</a>
+                                        </li>
+                                        <li>
+                                            <a href=""><i class="fa fa-columns fa-fw"></i> Revista</a>
+                                        </li>
+                                        <li>
+                                            <a href=""><i class="fa fa-wifi fa-fw"></i> Internet</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <a href="morris.html">Noticias de hoy</a>
