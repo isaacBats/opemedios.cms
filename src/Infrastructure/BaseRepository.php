@@ -8,10 +8,15 @@ abstract class BaseRepository{
 
 	protected function getPDO(){
 
-		return new \PDO(
-			'mysql:host=localhost;dbname=opemedios', 
-			'opemedios', 
-			'opemedios'
-		);
+		if( !self::$pdo){
+
+			self::$pdo = new \PDO(
+				'mysql:host=localhost;dbname=opemedios', 
+				'opemedios', 
+				'opemedios'
+			);			
+		}
+
+		return self::$pdo;
 	}
 }
