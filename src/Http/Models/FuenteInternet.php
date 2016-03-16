@@ -30,7 +30,7 @@ class FuenteInternet extends Fuente{
      *
      * @return self
      */
-    private function _setUrl($url)
+    protected function setUrl($url)
     {
         $this->url = $url;
 

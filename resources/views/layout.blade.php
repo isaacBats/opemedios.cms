@@ -283,19 +283,19 @@
                                     <a href="javascript:void(0)">Agregar Noticia <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href=""><i class="fa fa-youtube-play fa-fw"></i> Televisión</a>
+                                            <a href="#"><i class="fa fa-youtube-play fa-fw"></i> Televisión</a>
                                         </li>
                                         <li>
-                                            <a href=""><i class="fa fa-headphones fa-fw"></i> Radio</a>
+                                            <a href="#"><i class="fa fa-headphones fa-fw"></i> Radio</a>
                                         </li>
                                         <li>
-                                            <a href=""><i class="fa fa-newspaper-o fa-fw"></i> Periodico</a>
+                                            <a href="#"><i class="fa fa-newspaper-o fa-fw"></i> Periodico</a>
                                         </li>
                                         <li>
-                                            <a href=""><i class="fa fa-columns fa-fw"></i> Revista</a>
+                                            <a href="#"><i class="fa fa-columns fa-fw"></i> Revista</a>
                                         </li>
                                         <li>
-                                            <a href=""><i class="fa fa-wifi fa-fw"></i> Internet</a>
+                                            <a href="#"><i class="fa fa-wifi fa-fw"></i> Internet</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -315,14 +315,32 @@
                             <a href="#"><i class="fa fa-link fa-fw"></i> Fuentes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Agregar Fuente</a>
+                                    <a href="javascript:void(0)">Agregar Fuente <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="panel/font/add/font-tv"><i class="fa fa-youtube-play fa-fw"></i> Televisión</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-headphones fa-fw"></i> Radio</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-newspaper-o fa-fw"></i> Periodico</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-columns fa-fw"></i> Revista</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-wifi fa-fw"></i> Internet</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Administrar Fuentes</a>
+                                    <a href="">Administrar Fuentes</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li><li>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-th fa-fw"></i> Sectores<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
