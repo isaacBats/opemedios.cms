@@ -15,5 +15,11 @@ class FontTVController extends BaseController{
 		return $renderer->render('addFontTV');
 	}
 
+	public function save(){
+
+		/*print_r($_POST);*/
+		echo "hola";
+	}
+
 }
 

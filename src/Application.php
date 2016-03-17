@@ -31,6 +31,7 @@ class Application
         
         //rutas Fuentes
         $router->get('panel/font/add/font-tv', FontTVController::class . '@add');
+        $router->post('', FontTVController::class . '@save');
         
 
         $response = $router->dispatch(Request::capture());

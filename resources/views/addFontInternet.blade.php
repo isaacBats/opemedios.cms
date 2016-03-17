@@ -19,28 +19,33 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <form role="form" action="panel/font/add/font-tv/save" method="post" name="fontTV">
+                        <form role="form">
                             <div class="form-group">
-                                <input class="form-control" placeholder="Nombre" name="nombre">
+                                <input class="form-control" placeholder="Nombre">
+                                <p class="help-block">Example block-level help text here.</p>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Empresa" name="empresa">
+                                <input class="form-control" placeholder="Empresa">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Conductor" name="conductor">
+                                <input class="form-control" placeholder="Conductor">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Canal" name="canal">
+                                <input class="form-control" placeholder="Canal">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Horario" name="horario">
-                                <p class="help-block">Example: 7:00 - 8:00 AM.</p>
+                                <input class="form-control" placeholder="Horario">
                             </div>
                             <div class="form-group">
-                                <label>Comentarios:</label>
-                                <textarea class="form-control" name="comentario"></textarea>
+                                <label>File input</label>
+                                <input type="file">
                             </div>
-                            <input name="enviar" type="submit" class="btn btn-default" value="Guardar">
+                            <div class="form-group">
+                                <label>Text area</label>
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
                         </form>
                     </div>
                 </div>
