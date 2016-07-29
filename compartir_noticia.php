@@ -215,10 +215,9 @@ $base->close();
 	<div id="header-container" class="clearfix">
 		<div id="header">
 			<div id="logo">
-				<a href="http://www.operamedios.com.mx"><img alt="Inicio-OperaMedios" src="Nota/images/logo111x42.png"></a>
-			</div>
-			<div id="header-ads">
-				<a href="#"><img alt="" name="banner" src="Nota/banner/VIDEOCINE2.jpg"></a>
+				<a href="http://www.opemedios.com.mx/">
+					<img alt="Inicio-OperaMedios" src="Nota/images/logo111x42.png" width="80" />
+				</a>
 			</div>
 		</div>
 	</div>
@@ -226,8 +225,8 @@ $base->close();
 		<div id="sub-menu">
 			<div id="sub-menu-ul-container" style="margin-left: 0px;">
 				<ul style="width: 625px;">
-					<li><a href="http://www.operamedios.com.mx">Inicio</a></li>
-					<!-- <li><a href="#">Revista</a></li>
+					<!-- <li><a href="http://www.operamedios.com.mx">Inicio</a></li>
+					<li><a href="#">Revista</a></li>
 					<li><a href="#">Periodico</a></li>
 					<li><a href="#">Television</a></li>
 					<li><a href="#">Radio</a></li>
@@ -265,29 +264,6 @@ $base->close();
 		        </div>	          	           	        
 		</div>
 	</div>
-	
-	<div id="sidebar" style="position: relative; height: 460px;" class="masonry">
-        	<ul>
-        		<!-- Social Networks -->
-        		<li class="masonry masonry-brick" style="position: absolute; top: 0px; left: 0px;">
-        			<h3 class="widget-title">Redes Sociales</h3>
-        			<div class="widget-container social-widget">
-        				<a href="https://www.facebook.com/pages/Opemedios/586086271483511"><img alt="" src="Nota/img/facebook.png"></a>        				        			
-        				<a href="https://twitter.com/DeMonitoreo"><img alt="" src="Nota/img/twitter.png"></a>        				
-        			</div>
-        		</li>
-        		<!-- End Social Networks -->    
-        			
-        		<!-- Video Widget -->
-        		<li class="masonry masonry-brick" style="position: absolute; top: 160px; left: 0px;">
-        			<h3 class="widget-title">&nbsp;</h3>
-        			<div class="widget-container video-widget" align="center">
-        				<a href="http://www.operamedios.com.mx"> <img src="Nota/banner/Derecho.jpg" alt="Publicidad" ></a>
-        			</div>
-        		</li>
-        		<!-- End Video Widget -->        		    	
-        	</ul>
-        </div>
 		<div id="footer">
 			<table border="0" cellspacing="0" cellpadding="0" width="960px" align="center">
 			<tbody><tr>
@@ -297,8 +273,18 @@ $base->close();
 					Tel: 5584.64.10  E-mail: atencion@opemedios.com.mx  <br>
 				</td>
 				<td align="right" valign="top" width="50%">
-				<img src="images/trans.gif" width="1" height="15" alt=""><br>
-				<a href="http://operamedios.com.mx/quienes.php">Quienes Somos</a> | <a href="http://operamedios.com.mx/clientes.php">Clientes</a> | <a href="http://operamedios.com.mx/servicios.php">Servicios</a> | <a href="http://operamedios.com.mx/contacto.php">Contacto</a> | <a href="http://operamedios.com.mx/">Home</a><br>
+					<img src="images/trans.gif" width="1" height="15" alt=""><br>
+					<a href="http://www.opemedios.com.mx/quienes.shtml" target="_blank" >Quienes Somos</a> 	| 
+					<a href="http://www.opemedios.com.mx/clientes.shtml" target="_blank" >Clientes</a> 		| 
+					<a href="http://www.opemedios.com.mx/servicios.shtml" target="_blank" >Servicios</a> 	| 
+					<a href="http://www.opemedios.com.mx/contacto.shtml" target="_blank" >Contacto</a> 		| 
+					<a href="http://www.opemedios.com.mx/">Home</a>
+					<a href="https://www.facebook.com/pages/Opemedios/586086271483511">
+    					<img alt="" src="Nota/img/facebook.png">
+    				</a>        				        				
+    				<a href="https://twitter.com/DeMonitoreo">
+    					<img alt="" src="Nota/img/twitter.png">
+    				</a><br>
 				</td>	
 			</tr>
 			</tbody>
