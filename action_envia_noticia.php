@@ -33,13 +33,10 @@ $phpmailer = new PHPMailer();
 $phpmailer->isSMTP();
 $phpmailer->SMTPAuth = true;
 $phpmailer->SMTPSecure = "ssl";
-// $phpmailer->Host = 'email-smtp.us-west-2.amazonaws.com';
-$phpmailer->Host = 'smtp.gmail.com';
+$phpmailer->Host = 'email-smtp.us-west-2.amazonaws.com';
 $phpmailer->Port = 465;
-// $phpmailer->Username = 'AKIAI6VE2IV27YC5DC3A';
-$phpmailer->Username = 'noticias.opemedios@gmail.com';
-// $phpmailer->Password = 'AhlgJyzCrpYH34oswl7TDYJnDLu4sZ/qQzc/IN9TSRRo';
-$phpmailer->Password = 'noti1234';
+$phpmailer->Username = 'AKIAI6VE2IV27YC5DC3A';
+$phpmailer->Password = 'AhlgJyzCrpYH34oswl7TDYJnDLu4sZ/qQzc/IN9TSRRo';
 $phpmailer->CharSet = 'UTF-8';
 $phpmailer->SetFrom('noticias@opemedios.com.mx', 'Noticias OPEMEDIOS');
 
