@@ -47,7 +47,6 @@
           case 1:
               // insertamos noticia en base de datos
               // 
-              echo '<pre>'; print_r($_POST); exit;
               $datos_noticia = array("id_noticia"=>"",
                                      "encabezado"=>$_POST['encabezado'],
                                      "sintesis"=>$_POST['sintesis'],
@@ -65,9 +64,10 @@
                                      "id_usuario"=>$_POST['id_usuario'],
                                      "hora"=>date("H:i:s",mktime($_POST['hora_HH'],$_POST['hora_MM'],$_POST['hora_SS'],1,1,2000)),
                                      "duracion"=>date("H:i:s",mktime($_POST['duracion_HH'],$_POST['duracion_MM'],$_POST['duracion_SS'],1,1,2000)),
-  								   "costo"=>$_POST['costo']);
+                     "costo"=>$_POST['costo']);
 
               $noticia = new NoticiaElectronico($datos_noticia);
+              echo '<pre>'; print_r($noticia); exit;
               $base->execute_query($noticia->SQL_NUEVA_NOTICIA());
 
               $id_registro = $base->get_row();
