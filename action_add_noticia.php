@@ -46,6 +46,8 @@
       switch($tipo){
           case 1:
               // insertamos noticia en base de datos
+              // 
+              echo '<pre>'; print_r($_POST); exit;
               $datos_noticia = array("id_noticia"=>"",
                                      "encabezado"=>$_POST['encabezado'],
                                      "sintesis"=>$_POST['sintesis'],
