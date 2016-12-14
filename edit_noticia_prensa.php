@@ -475,7 +475,7 @@ function MM_validateForm() { //v4.0
                                         </tr>
                                         <tr>
                                             <td>&nbsp;</td>
-                                            <td height="10" class="label3"><p>Alcanse:</p></td>
+                                            <td height="10" class="label3"><p>Alcance:</p></td>
 											                      <td><input name="alcanse" type="text" class="textbox1" id="alcanse" value="<?php echo $noticia->getAlcanse(); ?>" /></td>
 											                      <td>&nbsp;</td>
                                         </tr>

@@ -493,7 +493,7 @@ $base->close();
                                         </tr>
                                         <tr>
                                           <td>&nbsp;</td>
-                                          <td height="28" class="label3">Alcanse:</td>
+                                          <td height="28" class="label3">Alcance:</td>
                                           <td><label for="alcanse"></label>
                                           <input name="alcanse" type="text" class="textbox1" id="alcanse" value="<?php echo $noticia->getAlcanse() ?>" /></td>
                                           <td>&nbsp;</td>

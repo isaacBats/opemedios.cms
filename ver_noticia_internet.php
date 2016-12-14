@@ -226,7 +226,7 @@ $base->close();
                                                     <td><span class="label2">Sección:</span> <span class="label3"><?php echo $noticia->getSeccion();?></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><span class="label2">Alcanse:</span> <span class="label3"><?php echo $noticia->getAlcanse();?></span></td>
+                                                    <td><span class="label2">Alcance:</span> <span class="label3"><?php echo $noticia->getAlcanse();?></span></td>
                                                 </tr>
                                                 <tr>
                                                     <td>&nbsp;</td>

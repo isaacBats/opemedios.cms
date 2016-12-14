@@ -436,7 +436,7 @@ $base->close();
                                         </tr>
                                         <tr>
                                           <td>&nbsp;</td>
-                                          <td class="label3">Alcanse:</td>
+                                          <td class="label3">Alcance:</td>
                                           <td><input name="alcanse" type="text" class="textbox1" id="costo" value="<?php echo $noticia->getAlcanse();?>" /></td>
                                           <td>&nbsp;</td>
                                         </tr>
