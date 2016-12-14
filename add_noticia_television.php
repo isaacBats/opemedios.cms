@@ -372,7 +372,7 @@ function MM_validateForm() { //v4.0
                             <tr>
                                 <td width="10">&nbsp;</td>
                                 <td width="150" class="label1">Alcanse:</td>
-                                <td><input name="alcance" type="text" class="textbox2" id="alcance" /></td>
+                                <td><input name="alcanse" type="text" class="textbox2" id="alcanse" /></td>
                                 <td width="10">&nbsp;</td>
                             </tr>                         							
                             <tr id="col">
