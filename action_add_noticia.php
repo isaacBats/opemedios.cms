@@ -67,7 +67,6 @@
                      "costo"=>$_POST['costo']);
 
               $noticia = new NoticiaElectronico($datos_noticia);
-              echo '<pre>'; print_r($noticia); exit;
               $base->execute_query($noticia->SQL_NUEVA_NOTICIA());
 
               $id_registro = $base->get_row();
