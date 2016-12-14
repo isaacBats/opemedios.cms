@@ -46,6 +46,7 @@ $base->execute_query("SELECT
                           noticia.autor AS autor,
                           noticia.fecha AS fecha,
                           noticia.comentario AS comentario,
+                          noticia.alcanse AS alcanse,
                           noticia.id_tipo_fuente AS id_tipo_fuente,
                           noticia.id_fuente AS id_fuente,
                           noticia.id_seccion AS id_seccion,
@@ -297,6 +298,9 @@ $base->close();
                                                 </tr>
                                                 <tr>
                                                     <td><span class="label2">Sección:</span> <span class="label3"><?php echo $noticia->getSeccion();?></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="label2">Alcanse:</span> <span class="label3"><?php echo $noticia->getAlcanse();?></span></td>
                                                 </tr>
                                                 <tr>
                                                     <td>&nbsp;</td>
