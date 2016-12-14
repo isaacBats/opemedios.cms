@@ -37,6 +37,7 @@ $base->execute_query("SELECT
                           noticia.autor AS autor,
                           noticia.fecha AS fecha,
                           noticia.comentario AS comentario,
+                          noticia.alcanse AS alcanse,
                           noticia.id_tipo_fuente AS id_tipo_fuente,
                           noticia.id_fuente AS id_fuente,
                           noticia.id_seccion AS id_seccion,
@@ -431,6 +432,12 @@ $base->close();
                                           <td>&nbsp;</td>
                                           <td class="label3">Costo:</td>
                                           <td><input name="costo" type="text" class="textbox1" id="costo" value="<?php echo $noticia->getCosto();?>" /></td>
+                                          <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                          <td>&nbsp;</td>
+                                          <td class="label3">Alcanse:</td>
+                                          <td><input name="alcanse" type="text" class="textbox1" id="costo" value="<?php echo $noticia->getAlcanse();?>" /></td>
                                           <td>&nbsp;</td>
                                         </tr>
                                         <tr>
