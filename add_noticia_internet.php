@@ -326,7 +326,13 @@ do {
 				  </select>
                 </td>
                 <td>&nbsp;</td>
-              </tr>
+        </tr>
+        <tr>
+            <td width="10">&nbsp;</td>
+            <td width="150" class="label1">Alcanse:</td>
+            <td><input name="alcance" type="text" class="textbox2" id="alcance" /></td>
+            <td width="10">&nbsp;</td>
+        </tr>
 			  <tr>
                 <td>&nbsp;</td>
                 <td class="label1">URL:</td>

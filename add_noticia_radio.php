@@ -366,6 +366,12 @@ do {
                 <td class="label1">Costo Beneficio:($)</td>
                 <td colspan="2"><label for="costo"></label><input name="costo" type="text" class="textbox2" id="costo" /></td>
                 <td colspan="3" align="center">&nbsp;<!--<a href="#" onClick="ve_fuente()">Tabla de Costos</a>--></td>
+              </tr>
+              <tr>
+                  <td width="10">&nbsp;</td>
+                  <td width="150" class="label1">Alcanse:</td>
+                  <td><input name="alcance" type="text" class="textbox2" id="alcance" /></td>
+                  <td width="10">&nbsp;</td>
               </tr>              
               <tr>
                 <td>&nbsp;</td>
