@@ -316,6 +316,12 @@ function MM_validateForm() { //v4.0
                 <td>&nbsp;</td>
               </tr>
               <tr>
+                  <td width="10">&nbsp;</td>
+                  <td width="120" class="label1">Alcance:</td>
+                  <td><input name="alcanse" type="text" class="textbox2" id="alcanse" /></td>
+                  <td width="10">&nbsp;</td>
+              </tr>
+              <tr>
                 <td>&nbsp;</td>
                 <td class="label1">Comentarios:</td>
                 <td colspan="4"><textarea name="comentario" cols="45" rows="4" class="texboxML2" id="comentario"></textarea></td>

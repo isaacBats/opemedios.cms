@@ -87,3 +87,11 @@ div.comment-reply a.comment-reply-link:hover {
 	background-color: rgba(20,57,102, .8) !important;
 	filter:alpha(opacity=80)\0/;
 }
+
+#logo{
+	float: right;
+}
+
+#content{
+	max-width: 800px; 
+}

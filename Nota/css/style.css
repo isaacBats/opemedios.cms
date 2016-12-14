@@ -506,7 +506,7 @@ html[xmlns] .slides {display: block;}
 
 .slider-wrapper {
 	position: relative;
-	width: 630px;
+	width: 100%;
 	height: 435px;
 	margin-top: 20px;
 	background-color: #EEEEEE;
@@ -1003,9 +1003,8 @@ ul.sf-menu li.sfHover li ul { top: -999em }
 /* =  Content
 /*-------------------------------------------------*/
 #content {
-	padding-right: 20px;
-	float: left;
-	width: 630px;
+	margin: 20px auto;
+	width: 90%;
 }
 
 .page-container {

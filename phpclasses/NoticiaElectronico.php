@@ -74,12 +74,13 @@ class NoticiaElectronico extends Noticia
 
     public function SQL_NUEVA_NOTICIA()
     {
-        $query_nuevo = sprintf("SELECT NUEVA_NOTICIA_ELECTRONICO(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+        $query_nuevo = sprintf("SELECT NUEVA_NOTICIA_ELECTRONICO(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
             $this->GetSQLValueString($this->encabezado,"text"),
             $this->GetSQLValueString($this->sintesis,"text"),
             $this->GetSQLValueString($this->autor,"text"),
             $this->GetSQLValueString($this->fecha, "date"),
             $this->GetSQLValueString($this->comentario, "text"),
+            $this->GetSQLValueString($this->alcanse, "int"),
             $this->GetSQLValueString($this->id_tipo_fuente,"int"),
             $this->GetSQLValueString($this->id_fuente,"int"),
             $this->GetSQLValueString($this->id_seccion,"int"),
@@ -97,13 +98,14 @@ class NoticiaElectronico extends Noticia
 
         public function SQL_EDIT_NOTICIA()
     {
-        $query_edit = sprintf("SELECT EDIT_NOTICIA_ELECTRONICO(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+        $query_edit = sprintf("SELECT EDIT_NOTICIA_ELECTRONICO(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
             $this->GetSQLValueString($this->id, "int"),
             $this->GetSQLValueString($this->encabezado,"text"),
             $this->GetSQLValueString($this->sintesis,"text"),
             $this->GetSQLValueString($this->autor,"text"),
             $this->GetSQLValueString($this->fecha, "date"),
             $this->GetSQLValueString($this->comentario, "text"),
+            $this->GetSQLValueString($this->alcanse, "int"),
             $this->GetSQLValueString($this->id_tipo_fuente,"int"),
             $this->GetSQLValueString($this->id_fuente,"int"),
             $this->GetSQLValueString($this->id_seccion,"int"),

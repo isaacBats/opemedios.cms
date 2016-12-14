@@ -45,6 +45,7 @@ $base->execute_query("SELECT
                           noticia.autor AS autor,
                           noticia.fecha AS fecha,
                           noticia.comentario AS comentario,
+                          noticia.alcanse AS alcanse,
                           noticia.id_tipo_fuente AS id_tipo_fuente,
                           noticia.id_fuente AS id_fuente,
                           noticia.id_seccion AS id_seccion,
@@ -469,8 +470,14 @@ function MM_validateForm() { //v4.0
 										<tr>
                                             <td>&nbsp;</td>
                                             <td height="10" class="label3"><p>Costo Beneficio:</p></td>
-											<td><input name="costo" type="text" class="textbox1" id="costo" value="<?php echo $noticia->getCosto(); ?>" /></td>
-											<td>&nbsp;</td>
+                      <td><input name="costo" type="text" class="textbox1" id="costo" value="<?php echo $noticia->getCosto(); ?>" /></td>
+                      <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td height="10" class="label3"><p>Alcance:</p></td>
+											                      <td><input name="alcanse" type="text" class="textbox1" id="alcanse" value="<?php echo $noticia->getAlcanse(); ?>" /></td>
+											                      <td>&nbsp;</td>
                                         </tr>
                                         <tr>
                                         <tr>

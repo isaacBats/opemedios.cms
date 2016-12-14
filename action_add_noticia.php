@@ -46,12 +46,14 @@
       switch($tipo){
           case 1:
               // insertamos noticia en base de datos
+              // 
               $datos_noticia = array("id_noticia"=>"",
                                      "encabezado"=>$_POST['encabezado'],
                                      "sintesis"=>$_POST['sintesis'],
                                      "autor"=>$_POST['autor'],
                                      "fecha"=>date("Y-m-d",mktime(0,0,0,$_POST['fecha_m'],$_POST['fecha_d'],$_POST['fecha_y'])),
                                      "comentario"=>$_POST['comentario'],
+                                     "alcanse"=>$_POST['alcanse'],
                                      "id_tipo_fuente"=>$_POST['id_tipo_fuente'],
                                      "id_fuente"=>$_POST['id_fuente'],
                                      "id_seccion"=>$_POST['id_seccion'],
@@ -62,7 +64,7 @@
                                      "id_usuario"=>$_POST['id_usuario'],
                                      "hora"=>date("H:i:s",mktime($_POST['hora_HH'],$_POST['hora_MM'],$_POST['hora_SS'],1,1,2000)),
                                      "duracion"=>date("H:i:s",mktime($_POST['duracion_HH'],$_POST['duracion_MM'],$_POST['duracion_SS'],1,1,2000)),
-  								   "costo"=>$_POST['costo']);
+                     "costo"=>$_POST['costo']);
 
               $noticia = new NoticiaElectronico($datos_noticia);
               $base->execute_query($noticia->SQL_NUEVA_NOTICIA());
@@ -156,6 +158,7 @@
                                      "autor"=>$_POST['autor'],
                                      "fecha"=>date("Y-m-d",mktime(0,0,0,$_POST['fecha_m'],$_POST['fecha_d'],$_POST['fecha_y'])),
                                      "comentario"=>$_POST['comentario'],
+                                     "alcanse"=>$_POST['alcanse'],
                                      "id_tipo_fuente"=>$_POST['id_tipo_fuente'],
                                      "id_fuente"=>$_POST['id_fuente'],
                                      "id_seccion"=>$_POST['id_seccion'],
@@ -258,6 +261,7 @@
                                      "autor"=>$_POST['autor'],
                                      "fecha"=>date("Y-m-d",mktime(0,0,0,$_POST['fecha_m'],$_POST['fecha_d'],$_POST['fecha_y'])),
                                      "comentario"=>$_POST['comentario'],
+                                     "alcanse"=>$_POST['alcanse'],
                                      "id_tipo_fuente"=>$_POST['id_tipo_fuente'],
                                      "id_fuente"=>$_POST['id_fuente'],
                                      "id_seccion"=>$_POST['id_seccion'],
@@ -430,6 +434,7 @@
                                      "autor"=>$_POST['autor'],
                                      "fecha"=>date("Y-m-d",mktime(0,0,0,$_POST['fecha_m'],$_POST['fecha_d'],$_POST['fecha_y'])),
                                      "comentario"=>$_POST['comentario'],
+                                     "alcanse"=>$_POST['alcanse'],
                                      "id_tipo_fuente"=>$_POST['id_tipo_fuente'],
                                      "id_fuente"=>$_POST['id_fuente'],
                                      "id_seccion"=>$_POST['id_seccion'],
@@ -603,6 +608,7 @@
                                      "fecha"=>date("Y-m-d",mktime(0,0,0,$_POST['fecha_m'],$_POST['fecha_d'],$_POST['fecha_y'])),
   								   "hora_publicacion"=>date("H:i:s",mktime($_POST['hora_HH'],$_POST['hora_MM'],$_POST['hora_SS'],1,1,2000)),
                                      "comentario"=>$_POST['comentarios'],
+                                     "alcanse"=>$_POST['alcanse'],
                                      "id_tipo_fuente"=>$_POST['id_tipo_fuente'],
                                      "id_fuente"=>$_POST['id_fuente'],
                                      "id_seccion"=>$_POST['id_seccion'],

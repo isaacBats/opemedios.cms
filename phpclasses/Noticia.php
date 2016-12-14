@@ -13,6 +13,7 @@ class Noticia
     protected $autor;
     protected $fecha;
     protected $comentario;
+    protected $alcanse;
     protected $id_tipo_fuente;
     protected $tipo_fuente;
     protected $id_fuente;
@@ -45,6 +46,7 @@ class Noticia
         $this->autor = $datos['autor'];
         $this->fecha = $datos['fecha'];
         $this->comentario = $datos['comentario'];
+        $this->alcanse = $datos['alcanse'];
         $this->id_tipo_fuente = $datos['id_tipo_fuente'];
         $this->tipo_fuente = $datos['tipo_fuente'];
         $this->id_fuente = $datos['id_fuente'];
@@ -98,6 +100,10 @@ class Noticia
         
     public function getComentario() {
         return $this->comentario;
+    }
+
+    public function getAlcanse() {
+        return $this->alcanse;
     }
         
     public function getId_tipo_fuente() {

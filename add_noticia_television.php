@@ -368,6 +368,12 @@ function MM_validateForm() { //v4.0
                                 <td width="150" class="label1">Costo Beneficio:($)</td>
                                 <td><input name="costo" type="text" class="textbox2" id="costo" /></td>
                                 <td width="10">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td width="10">&nbsp;</td>
+                                <td width="150" class="label1">Alcance:</td>
+                                <td><input name="alcanse" type="text" class="textbox2" id="alcanse" /></td>
+                                <td width="10">&nbsp;</td>
                             </tr>                         							
                             <tr id="col">
                                 <td width="10">&nbsp;</td>								
