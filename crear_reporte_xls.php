@@ -897,7 +897,7 @@ $htmlcode = '<p><span style="font-size:medium; text-decoration:underline;">3.2 D
 					$row2 = $base2->get_row_assoc();
 					$htmlcode.= '<td width="30">'.number_format($row2['costo']).'</td>';
         }
-        $htmlcode.= '<td width="50">'.number_format($row2['alcanse']).'</td>';
+        $htmlcode.= '<td width="50">'.number_format($row['alcanse']).'</td>';
 
 				$htmlcode.= '<td width="75">'.$row['fecha'].'</td>
                             </tr>';
