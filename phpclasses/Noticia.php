@@ -103,7 +103,7 @@ class Noticia
     }
 
     public function getAlcanse() {
-        return $this->comentario;
+        return $this->alcanse;
     }
         
     public function getId_tipo_fuente() {
