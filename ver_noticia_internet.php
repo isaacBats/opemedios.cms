@@ -26,6 +26,9 @@ $current_user = new Usuario($base->get_row_assoc());
 $tabla_tipo = "noticia_int";
 $carpeta_tipo="internet";
 
+$qsector = (!isset($_GET['red'])) ? "" : "INNER JOIN sector ON (noticia.id_sector=sector.id_sector) ";  
+$qsector_nombre = (!isset($_GET['red'])) ? "" : " sector.nombre AS sector, ";
+
 
 //hacemos consulta para la creacion del objeto NoticiaExtra
 $base->execute_query("SELECT
@@ -45,22 +48,23 @@ $base->execute_query("SELECT
                           noticia.id_tendencia_monitorista AS id_tendencia_monitorista,
                           noticia.id_usuario AS id_usuario,
                           fuente.nombre AS fuente,
-                          seccion.nombre AS seccion,
-                          sector.nombre AS sector,
-                          tipo_fuente.descripcion AS tipo_fuente,
+                          seccion.nombre AS seccion, ".
+                          $qsector_nombre.
+                          " tipo_fuente.descripcion AS tipo_fuente,
                           tipo_autor.descripcion AS tipo_autor,
                           genero.descripcion AS genero,
                           tendencia.descripcion AS tendencia_monitorista,
                           ".$tabla_tipo.".url AS url,
+                          ".$tabla_tipo.".is_social AS is_social,
 						  ".$tabla_tipo.".costo AS costo,
 						  ".$tabla_tipo.".hora_publicacion AS hora_publicacion
                     FROM
                          noticia
                          INNER JOIN tipo_fuente ON (noticia.id_tipo_fuente=tipo_fuente.id_tipo_fuente)
                          INNER JOIN fuente ON (noticia.id_fuente=fuente.id_fuente)
-                         INNER JOIN seccion ON (noticia.id_seccion=seccion.id_seccion)
-                         INNER JOIN sector ON (noticia.id_sector=sector.id_sector)
-                         INNER JOIN tipo_autor ON (noticia.id_tipo_autor=tipo_autor.id_tipo_autor)
+                         INNER JOIN seccion ON (noticia.id_seccion=seccion.id_seccion) ".
+                         $qsector.
+                         " INNER JOIN tipo_autor ON (noticia.id_tipo_autor=tipo_autor.id_tipo_autor)
                          INNER JOIN genero ON (noticia.id_genero=genero.id_genero)
                          INNER JOIN tendencia ON (noticia.id_tendencia_monitorista=tendencia.id_tendencia)
                          INNER JOIN ".$tabla_tipo." ON (noticia.id_noticia=".$tabla_tipo.".id_noticia)
@@ -68,7 +72,6 @@ $base->execute_query("SELECT
 
 //creamos el objeto NoticiaElectronico con los datos que nos regrese la consulta
 $noticia = new NoticiaExtra($base->get_row_assoc(),5);
-
 
 ///hacemos consulta para obtener los datos del usuario Uploader, creamos el objeto y lo asignamos a la noticia
 $base->execute_query("SELECT * FROM usuario WHERE id_usuario = ".$noticia->getId_usuario().";");

@@ -270,8 +270,14 @@ function MM_swapImage() { //v3.0
                     </span>
                   </div>
                 </td>
-                <td><div align="center" class="label1"><span class="label5"><a href="ver_noticia_selector.php?id_noticia=<?php echo $row_noticias['Clave']; ?>&amp;id_tipo_fuente=<?php echo $row_noticias['TipoFuente']; ?>"><?php echo $row_noticias['Clave']; ?></a></span><br />
-                        <?php echo utf8_encode($row_noticias['Encabezado']); ?></div></td>
+                <td>
+                  <div align="center" class="label1">
+                    <span class="label5">
+                      <a href="ver_noticia_selector.php?id_noticia=<?= in_array($row_noticias['Clave'], $noticias_red) ? $row_noticias['Clave'] . '&amp;red=red' : $row_noticias['Clave']; ?>&amp;id_tipo_fuente=<?php echo $row_noticias['TipoFuente']; ?>"><?php echo $row_noticias['Clave']; ?></a>
+                    </span><br />
+                    <?php echo utf8_encode($row_noticias['Encabezado']); ?>
+                  </div>
+                </td>
                 <td><div align="center"><?php echo utf8_encode($row_noticias['NombreFuente']); ?></div></td>
                 <td><div align="center"><?php echo $msjenviado; ?></div></td>
               </tr>
