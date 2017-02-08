@@ -202,6 +202,9 @@ function MM_swapImage() { //v3.0
             <tr>
                 <td class="label1"><a href="noticiashoy2.php?tipo=6">Tele y Radio</a></td>
             </tr>
+            <tr>
+                <td class="label1"><a href="noticiashoy2.php?tipo=7">Redes Sociales</a></td>
+            </tr>
           </table>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -243,14 +246,30 @@ function MM_swapImage() { //v3.0
 						}
 					
 					}// end if numrows
-				  
+            
+              $noticias_red = null;
+              if ($row_noticias['TipoFuente'] == 5) {
+                $redes = $pdo->query("SELECT no.id_noticia FROM noticia no INNER JOIN noticia_int noi ON no.id_noticia = noi.id_noticia WHERE noi.is_social != 0")->fetchAll(\PDO::FETCH_ASSOC);
+
+                $noticias_red = array_column($redes, 'id_noticia');
+
+              }
 				  
 				  
 				  
 				   ?>
               <tr class="label2">
-                <td><div align="center"><img src="images/icons/<?php echo $row_noticias['TipoFuente']; ?>.png" name="icon" id="icon" /><span class="label5"><br />
-                </span></div></td>
+                <td>
+                  <div align="center">
+                    <?php if (in_array($row_noticias['Clave'], $noticias_red)): ?>
+                      <img width="32" height="32" src="images/icons/6.png" name="icon" id="icon" />
+                    <?php else: ?>
+                      <img src="images/icons/<?php echo $row_noticias['TipoFuente']; ?>.png" name="icon" id="icon" />
+                    <?php endif; ?>
+                    <span class="label5"><br />
+                    </span>
+                  </div>
+                </td>
                 <td><div align="center" class="label1"><span class="label5"><a href="ver_noticia_selector.php?id_noticia=<?php echo $row_noticias['Clave']; ?>&amp;id_tipo_fuente=<?php echo $row_noticias['TipoFuente']; ?>"><?php echo $row_noticias['Clave']; ?></a></span><br />
                         <?php echo utf8_encode($row_noticias['Encabezado']); ?></div></td>
                 <td><div align="center"><?php echo utf8_encode($row_noticias['NombreFuente']); ?></div></td>

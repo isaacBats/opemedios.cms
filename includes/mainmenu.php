@@ -10,6 +10,7 @@
                         <li><a href="#" onclick="window.open('add_noticia_periodico.php','','scrollbars=yes,resizable=yes,width=522,height=660')">Peri&oacute;dico</a></li>
                         <li><a href="#" onclick="window.open('add_noticia_revista.php','','scrollbars=yes,resizable=yes,width=522,height=660')">Revista</a></li>
                         <li><a href="#" onclick="window.open('add_noticia_internet.php','','scrollbars=yes,resizable=yes,width=522,height=660')">Internet</a></li>
+                        <li><a href="#" onclick="window.open('add_noticia_red.php','','scrollbars=yes,resizable=yes,width=522,height=660')">Redes Sociales</a></li>
                     </ul>
                 </li>
                 <li><a href="noticiashoy.php">Noticias de Hoy</a></li>
@@ -26,6 +27,7 @@
                         <li><a href="add_fuente_periodico.php">Peri&oacute;dico</a></li>
                         <li><a href="add_fuente_revista.php">Revista</a></li>
                         <li><a href="add_fuente_internet.php">Internet</a></li>
+                        <li><a href="add_fuente_red.php">Redes Sociales</a></li>
                     </ul>
                 </li>
                 <li><a href="admin_fuentes.php">Administrar Fuentes</a></li>

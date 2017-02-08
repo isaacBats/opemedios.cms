@@ -1,4 +1,5 @@
   <?php
+  
   include("phpdelegates/db_array.php");
   include("phpdao/OpmDB.php");
   include("phpclasses/Archivo.php");
@@ -612,13 +613,15 @@
                                      "id_tipo_fuente"=>$_POST['id_tipo_fuente'],
                                      "id_fuente"=>$_POST['id_fuente'],
                                      "id_seccion"=>$_POST['id_seccion'],
-                                     "id_sector"=>$_POST['id_sector'],
+                                     "id_sector"=> isset($_POST['id_sector']) ? $_POST['id_sector'] : 0,
                                      "id_tipo_autor"=>$_POST['id_tipo_autor'],
                                      "id_genero"=>$_POST['id_genero'],
                                      "id_tendencia_monitorista"=>$_POST['id_tendencia_monitorista'],
                                      "id_usuario"=>$_POST['id_usuario'],
                                      "url"=>$_POST['url'],
+                                     "is_social"=> isset($_POST['is_social']) ? $_POST['is_social'] : 0,
   								   "costo"=>$_POST['costo']);
+
               $noticia = new NoticiaExtra($datos_noticia,$tipo);
   			      $SQL = $noticia->SQL_NUEVA_NOTICIA();
               $base->execute_query($noticia->SQL_NUEVA_NOTICIA());

@@ -12,6 +12,7 @@ class NoticiaExtra extends Noticia
     private $id_tipo_pagina;
     private $tipo_pagina;
     private $porcentaje_pagina;
+    private $is_social;
     private $url;
     private $ubicacion;
     private $archivo_pagina;
@@ -52,6 +53,7 @@ class NoticiaExtra extends Noticia
                 $this->id_tamano_nota = "-1";// se coloca -1 para evitar null
                 $this->tamano_nota = "";
                 $this->url = $datos['url'];
+                $this->is_social = $datos['is_social'];
 				$this->hora_publicacion = $datos['hora_publicacion'];
                 $this->ubicacion = "";
                 $this->archivo_pagina = "";
@@ -142,7 +144,7 @@ class NoticiaExtra extends Noticia
     
     public function SQL_NUEVA_NOTICIA()
     {
-        $query_nuevo = sprintf("SELECT NUEVA_NOTICIA_EXTRA(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%f)",
+        $query_nuevo = sprintf("SELECT NUEVA_NOTICIA_EXTRA(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%f)",
             $this->GetSQLValueString($this->encabezado,"text"),
             $this->GetSQLValueString($this->sintesis,"text"),
             $this->GetSQLValueString($this->autor,"text"),
@@ -161,6 +163,7 @@ class NoticiaExtra extends Noticia
             $this->GetSQLValueString($this->id_tipo_pagina, "int"),
             $this->GetSQLValueString($this->porcentaje_pagina, "double"),
             $this->GetSQLValueString($this->url, "text"),
+            $this->GetSQLValueString($this->is_social, "int"),
 			$this->GetSQLValueString($this->hora_publicacion, "date"),
 			$this->GetSQLValueString($this->costo, "float")
         );
@@ -169,7 +172,7 @@ class NoticiaExtra extends Noticia
 
         public function SQL_EDIT_NOTICIA()
     {
-        $query_edit = sprintf("SELECT EDIT_NOTICIA_EXTRA(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+        $query_edit = sprintf("SELECT EDIT_NOTICIA_EXTRA(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
             $this->GetSQLValueString($this->id,"int"),
             $this->GetSQLValueString($this->encabezado,"text"),
             $this->GetSQLValueString($this->sintesis,"text"),
@@ -188,6 +191,7 @@ class NoticiaExtra extends Noticia
             $this->GetSQLValueString($this->id_tipo_pagina, "int"),
             $this->GetSQLValueString($this->porcentaje_pagina, "double"),
             $this->GetSQLValueString($this->url, "text"),
+            $this->GetSQLValueString($this->is_social, "int"),
 			$this->GetSQLValueString($this->hora_publicacion, "date"),
 			$this->GetSQLValueString($this->costo, "float")
         );

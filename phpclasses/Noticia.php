@@ -13,6 +13,7 @@ class Noticia
     protected $autor;
     protected $fecha;
     protected $comentario;
+    // Se agrega el alcance
     protected $alcanse;
     protected $id_tipo_fuente;
     protected $tipo_fuente;
