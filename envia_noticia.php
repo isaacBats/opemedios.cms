@@ -28,6 +28,10 @@ $base->init();
 $base->execute_query("SELECT * FROM usuario WHERE username = '".$session_usr."'");// session_usr se encuentra en los includes de sesion
 $current_user = new Usuario($base->get_row_assoc());
 
+$is_red = (isset($_GET['red'])) ? $_GET['red'] : null;
+
+$qsector = (!is_null($is_red) && $is_red == true) ? "" : "INNER JOIN sector ON (noticia.id_sector=sector.id_sector) ";  
+$qsector_nombre = (!is_null($is_red) && $is_red == true) ? "" : " sector.nombre AS sector, ";
 
 //hacemos consulta para la creacion del objeto NoticiaExtra
 $base->execute_query("SELECT
@@ -44,9 +48,9 @@ $base->execute_query("SELECT
                           noticia.id_tipo_autor AS id_tipo_autor,
                           noticia.id_genero AS id_genero,
                           fuente.nombre AS fuente,
-                          seccion.nombre AS seccion,
-                          sector.nombre AS sector,
-                          tipo_fuente.descripcion AS tipo_fuente,
+                          seccion.nombre AS seccion, ".
+                          $qsector_nombre.
+                          " tipo_fuente.descripcion AS tipo_fuente,
                           tipo_autor.descripcion AS tipo_autor,
                           genero.descripcion AS genero,
                           tendencia.descripcion AS tendencia,
@@ -56,9 +60,9 @@ $base->execute_query("SELECT
                          noticia
                          INNER JOIN tipo_fuente ON (noticia.id_tipo_fuente=tipo_fuente.id_tipo_fuente)
                          INNER JOIN fuente ON (noticia.id_fuente=fuente.id_fuente)
-                         INNER JOIN seccion ON (noticia.id_seccion=seccion.id_seccion)
-                         INNER JOIN sector ON (noticia.id_sector=sector.id_sector)
-                         INNER JOIN tipo_autor ON (noticia.id_tipo_autor=tipo_autor.id_tipo_autor)
+                         INNER JOIN seccion ON (noticia.id_seccion=seccion.id_seccion) ".
+                         $qsector.
+                         " INNER JOIN tipo_autor ON (noticia.id_tipo_autor=tipo_autor.id_tipo_autor)
                          INNER JOIN genero ON (noticia.id_genero=genero.id_genero)
                          INNER JOIN tendencia ON (noticia.id_tendencia_monitorista=tendencia.id_tendencia)
                     WHERE noticia.id_noticia = ".$_GET['id_noticia']." LIMIT 1;");

@@ -26,9 +26,8 @@ $current_user = new Usuario($base->get_row_assoc());
 $tabla_tipo = "noticia_int";
 $carpeta_tipo="internet";
 
-$qsector = (!isset($_GET['red'])) ? "" : "INNER JOIN sector ON (noticia.id_sector=sector.id_sector) ";  
-$qsector_nombre = (!isset($_GET['red'])) ? "" : " sector.nombre AS sector, ";
-
+$qsector = ($_GET['red'] == true) ? "" : "INNER JOIN sector ON (noticia.id_sector=sector.id_sector) ";  
+$qsector_nombre = ($_GET['red'] == true) ? "" : " sector.nombre AS sector, ";
 
 //hacemos consulta para la creacion del objeto NoticiaExtra
 $base->execute_query("SELECT

@@ -782,6 +782,13 @@ if($_POST['tipo_correo'] == 3)
             case($_POST['id_tipo_fuente'] == 5):  // noticia de internet              
                 $tabla_tipo = "noticia_int";
                 $mensaje_archivo="Descarga Aqui";
+
+                require_once('Connections/bitacora.php');
+                $newInt = $pdo->query("SELECT * FROM noticia_int WHERE id_noticia = " . $_POST['id_noticia'])->fetch(\PDO::FETCH_ASSOC);
+
+                $qsector = ($newInt['is_social'] == 1) ? "" : "INNER JOIN sector ON (noticia.id_sector=sector.id_sector) ";  
+                $qsector_nombre = ($newInt['is_social'] == 1) ? "" : " sector.nombre AS sector, ";
+
                 //hacemos consulta para la creacion del objeto NoticiaExtra
                 $base->execute_query("SELECT
                                           noticia.id_noticia AS id_noticia,
@@ -799,9 +806,9 @@ if($_POST['tipo_correo'] == 3)
                                           noticia.id_tendencia_monitorista AS id_tendencia_monitorista,
                                           noticia.id_usuario AS id_usuario,
                                           fuente.nombre AS fuente,
-                                          seccion.nombre AS seccion,
-                                          sector.nombre AS sector,
-                                          tipo_fuente.descripcion AS tipo_fuente,
+                                          seccion.nombre AS seccion, ".
+                                          $qsector_nombre.
+                                          " tipo_fuente.descripcion AS tipo_fuente,
                                           tipo_autor.descripcion AS tipo_autor,
                                           genero.descripcion AS genero,
                                           tendencia.descripcion AS tendencia_monitorista,
@@ -811,9 +818,9 @@ if($_POST['tipo_correo'] == 3)
                                          noticia
                                          INNER JOIN tipo_fuente ON (noticia.id_tipo_fuente=tipo_fuente.id_tipo_fuente)
                                          INNER JOIN fuente ON (noticia.id_fuente=fuente.id_fuente)
-                                         INNER JOIN seccion ON (noticia.id_seccion=seccion.id_seccion)
-                                         INNER JOIN sector ON (noticia.id_sector=sector.id_sector)
-                                         INNER JOIN tipo_autor ON (noticia.id_tipo_autor=tipo_autor.id_tipo_autor)
+                                         INNER JOIN seccion ON (noticia.id_seccion=seccion.id_seccion) ".
+                                         $qsector.
+                                         " INNER JOIN tipo_autor ON (noticia.id_tipo_autor=tipo_autor.id_tipo_autor)
                                          INNER JOIN genero ON (noticia.id_genero=genero.id_genero)
                                          INNER JOIN tendencia ON (noticia.id_tendencia_monitorista=tendencia.id_tendencia)
                                          INNER JOIN ".$tabla_tipo." ON (noticia.id_noticia=".$tabla_tipo.".id_noticia)

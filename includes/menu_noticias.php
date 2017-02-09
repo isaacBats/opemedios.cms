@@ -27,8 +27,8 @@ $menu_item_archivos_prensa = '<li><a class="MenuBarItemSubmenu" href="#">Archivo
                                       <li><a href="set_archivo_contenedor.php?id_noticia='.$noticia->getId().'">Establecer Contenedor</a></li>
                                   </ul>
                               </li>';
-
-$menu_item_enviar = '<li><a href="envia_noticia.php?id_noticia='.$noticia->getId().'">Enviar Noticia</a></li>';
+$getRed = isset($_GET['red']) ? '&red='.$_GET['red'] : '';
+$menu_item_enviar = '<li><a href="envia_noticia.php?id_noticia='.$noticia->getId().$getRed.'">Enviar Noticia</a></li>';
 $menu_item_vernoticia = '<li><a href="ver_noticia_selector.php?id_noticia='.$noticia->getId().'&id_tipo_fuente='.$noticia->getId_tipo_fuente().'">Visualizar Noticia</a></li>';
 //borrar noticia
 $menu_item_borrar_noticia = '<li><a onclick="if(!confirm(\'Está seguro de borrar la noticia '.$noticia->getId().'?\'))return false" href="borra_noticia.php?id_noticia='.$noticia->getId().'&id_tipo_fuente='.$noticia->getId_tipo_fuente().'">Eliminar Noticia</a></li>';

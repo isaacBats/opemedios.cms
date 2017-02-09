@@ -6,6 +6,9 @@
 $tipofuente = $_GET['id_tipo_fuente'];
 $idnoticia = $_GET['id_noticia'];
 
+$is_red = (isset($_GET['red'])) ? true : false;
+
+
 switch($tipofuente)
 {
 	case "1":
@@ -25,7 +28,7 @@ switch($tipofuente)
 		break;
 
 	case "5":
-		header("Location: ver_noticia_internet.php?id_noticia=".$idnoticia);
+		header("Location: ver_noticia_internet.php?id_noticia=".$idnoticia."&red=".$is_red);
 		break;
 }
 
