@@ -946,7 +946,7 @@ if($_POST['tipo_correo'] == 3)
                                                         <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Fecha:</b> '.$noticia->getFecha_larga().'</td>
                                                     </tr>
                                                     <tr bgcolor="#ffede1">
-                                                        <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Fuente:</b> '.$nombreFuente().'</td>
+                                                        <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Fuente:</b> '.$nombreFuente.'</td>
                                                         <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>URL:</b><a href="'.$noticia->getUrl().'">Ir a URL</a></td>
                                                     </tr>
                                                     <tr bgcolor="#ffede1">
