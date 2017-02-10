@@ -131,6 +131,22 @@ $base->close();
                         ['id' => 4, 'fuente' => 'Instagram'],
                     ];
 
+//creamos un arreglo para mostrar el menu tipo de autor
+$arreglo_tipo_autor = [
+                        ['id' => 1, 'tipo_autor' => 'Youtuber'],
+                        ['id' => 2, 'tipo_autor' => 'Facebook'],
+                        ['id' => 3, 'tipo_autor' => 'Twitter'],
+                        ['id' => 4, 'tipo_autor' => 'Instagram'],
+                      ];
+
+// Arreglo para el mostrar el menu de genero 
+$arreglo_generos = [
+                    ['id' => 1, 'genero' => 'Facebook'], 
+                    ['id' => 2, 'genero' => 'Twitter'], 
+                    ['id' => 3, 'genero' => 'Youtube'], 
+                    ['id' => 4, 'genero' => 'Instagram'],
+                   ];
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -209,7 +225,28 @@ $base->close();
                                                     <td>&nbsp;</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><span class="label2">Autor</span>: <span class="label3"><?php echo $noticia->getAutor()." (".$noticia->getTipo_autor().")";?></span></td>
+                                                    <td>
+                                                        <span class="label2">Autor</span>: 
+                                                        <span class="label3">
+                                                            <?php 
+                                                                if ($noticia->getIsSocial()) {
+
+                                                                    $tipoAutor = array_filter($arreglo_tipo_autor, function ($autor) use ($noticia) {
+                                                                              return $autor['id'] == $noticia->getId_tipo_autor();
+                                                                          });
+
+                                                                          $tipoAutor = current($tipoAutor);
+
+                                                                          echo $noticia->getAutor()." (".$tipoAutor['tipo_autor'].")";
+
+                                                                } else {
+
+                                                                    echo $noticia->getAutor()." (".$noticia->getTipo_autor().")";
+                                                                }
+
+                                                            ?>                                                                
+                                                        </span>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>&nbsp;</td>
@@ -270,7 +307,28 @@ $base->close();
                                                     <td><span class="label2">Sector:</span> <span class="label3"><?php echo $noticia->getSector();?></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><span class="label2">Género:</span> <span class="label3"><?php echo utf8_encode($noticia->getGenero());?></span></td>
+                                                    <td>
+                                                        <span class="label2">Género:</span> 
+                                                        <span class="label3">
+                                                            <?php 
+                                                                if ($noticia->getIsSocial()) {
+
+                                                                    $tipoGenero = array_filter($arreglo_generos, function ($genero) use ($noticia) {
+                                                                              return $genero['id'] == $noticia->getId_genero();
+                                                                          });
+
+                                                                          $tipoGenero = current($tipoGenero);
+
+                                                                          echo $tipoGenero['genero'];
+
+                                                                } else {
+
+                                                                    echo utf8_encode($noticia->getGenero());
+                                                                }
+                                                            ?>
+                                                            
+                                                        </span>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span class="label2">Tendencia:</span> <span class="label3"><?php echo $noticia->getTendencia_monitorista();?></span></td>
