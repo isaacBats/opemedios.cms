@@ -884,19 +884,22 @@ if($_POST['tipo_correo'] == 3)
                         return $autor['id'] == $noticia->getId_tipo_autor();
                     });
 
-                    $tipoAutor = current($tipoAutor)['tipo_autor'];
+                    $getAutor = current($tipoAutor)['tipo_autor'];
+                    $tipoAutor = $getAutor['tipo_autor'];
 
                     $nombreFuente = array_filter($arreglo_fuentes, function ($fuente) use ($noticia) {
                         return $fuente['id'] == $noticia->getId_fuente();
                     });
 
-                    $nombreFuente = current($nombreFuente)['fuente'];
+                    $getFuente = current($nombreFuente)['fuente'];
+                    $nombreFuente = $getFuente['fuente'];
 
                     $tipoGenero = array_filter($arreglo_generos, function ($genero) use ($noticia) {
                         return $genero['id'] == $noticia->getId_genero();
                     });
 
-                    $tipoGenero = current($tipoGenero)['genero'];
+                    $getGenero = current($tipoGenero)['genero'];
+                    $tipoGenero = $getGenero['genero'];
                 } else {
                     $tipoAutor = $noticia->getTipo_autor();
                     $nombreFuente = $noticia->getFuente();
