@@ -93,6 +93,10 @@ class NoticiaExtra extends Noticia
     public function getUrl() {
         return $this->url;
     }
+
+    public function getIsSocial() {
+        return $this->is_social;
+    }
 	
 	public function getHora_publicacion() {
         return $this->hora_publicacion;

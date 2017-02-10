@@ -78,7 +78,7 @@ $tipo_orden = "ASC";
 
 //die($parametro_noticias);
 mysql_select_db($database_bitacora, $bitacora);
-$query_noticias = sprintf("SELECT noticia.id_noticia AS Clave,   noticia.encabezado AS Encabezado,   noticia.fecha AS Fecha,   noticia.id_tipo_fuente AS TipoFuente,   fuente.nombre AS NombreFuente,   fuente.logo AS LogoFuente,   seccion.nombre AS NombreSeccion FROM  noticia  INNER JOIN fuente ON (noticia.id_fuente=fuente.id_fuente)  INNER JOIN seccion ON (noticia.id_seccion=seccion.id_seccion) WHERE   noticia.fecha BETWEEN (CURDATE() - INTERVAL 1 DAY) AND CURDATE() AND noticia.id_tipo_fuente IN (%s) ORDER BY Clave %s", $parametro_noticias, $tipo_orden);
+$query_noticias = sprintf("SELECT noticia.id_noticia AS Clave,   noticia.id_fuente AS idFuente, noticia.encabezado AS Encabezado,   noticia.fecha AS Fecha,   noticia.id_tipo_fuente AS TipoFuente,   fuente.nombre AS NombreFuente,   fuente.logo AS LogoFuente,   seccion.nombre AS NombreSeccion FROM  noticia  INNER JOIN fuente ON (noticia.id_fuente=fuente.id_fuente)  INNER JOIN seccion ON (noticia.id_seccion=seccion.id_seccion) WHERE   noticia.fecha BETWEEN (CURDATE() - INTERVAL 1 DAY) AND CURDATE() AND noticia.id_tipo_fuente IN (%s) ORDER BY Clave %s", $parametro_noticias, $tipo_orden);
 $query_limit_noticias = sprintf("%s LIMIT %d, %d", $query_noticias, $startRow_noticias, $maxRows_noticias);
 //die($query_limit_noticias);
 //$noticias = mysql_query("SET time_zone = '-06:00'");
@@ -246,15 +246,37 @@ function MM_swapImage() { //v3.0
 						}
 					
 					}// end if numrows
-            
+              
+              // Para las noticias de redes
+
               $noticias_red = null;
               if ($row_noticias['TipoFuente'] == 5) {
-                $redes = $pdo->query("SELECT no.id_noticia FROM noticia no INNER JOIN noticia_int noi ON no.id_noticia = noi.id_noticia WHERE noi.is_social != 0")->fetchAll(\PDO::FETCH_ASSOC);
+                $redes = $pdo->query("SELECT no.id_noticia, no.id_fuente FROM noticia no INNER JOIN noticia_int noi ON no.id_noticia = noi.id_noticia WHERE noi.is_social != 0")->fetchAll(\PDO::FETCH_ASSOC);
 
                 $noticias_red = array_column($redes, 'id_noticia');
 
               }
-				  
+
+              $arreglo_fuentes = [
+                                    ['id' => 1, 'fuente' => 'Facebook'], 
+                                    ['id' => 2, 'fuente' => 'Twitter'], 
+                                    ['id' => 3, 'fuente' => 'Youtube'], 
+                                    ['id' => 4, 'fuente' => 'Instagram'],
+                                 ];
+				    foreach ($redes as $newRed) {
+              
+              if ($newRed['id_noticia'] == $row_noticias['Clave']) {
+                  $nombreFuente = array_filter($arreglo_fuentes, function ($fuente) use ($row_noticias) {
+                      return $fuente['id'] == $row_noticias['idFuente'];
+                  });
+
+                  $nombreFuente = current($nombreFuente);
+
+                  $row_noticias['NombreFuente'] = $nombreFuente['fuente'];
+              }
+
+            }
+
 				  
 				  
 				   ?>

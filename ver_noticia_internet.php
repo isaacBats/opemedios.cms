@@ -123,6 +123,14 @@ else
 $base->free_result();
 $base->close();
 
+// Si la noticia es de tipo Red
+ $arreglo_fuentes = [
+                        ['id' => 1, 'fuente' => 'Facebook'], 
+                        ['id' => 2, 'fuente' => 'Twitter'], 
+                        ['id' => 3, 'fuente' => 'Youtube'], 
+                        ['id' => 4, 'fuente' => 'Instagram'],
+                    ];
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -222,7 +230,31 @@ $base->close();
                                                     <td>&nbsp;</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><p><span class="label2">Fuente:</span> <span class="label3"><?php echo $noticia->getFuente();?></span></p>                                    </td>
+                                                    <td>
+                                                        <p>
+                                                            <span class="label2">Fuente:</span> 
+                                                            <span class="label3">
+                                                                <?php
+                                                                    if ($noticia->getIsSocial()) {
+
+                                                                        $nombreFuente = array_filter($arreglo_fuentes, function ($fuente) use ($noticia) {
+                                                                                  return $fuente['id'] == $noticia->getId_fuente();
+                                                                              });
+
+                                                                              $nombreFuente = current($nombreFuente);
+
+                                                                              echo $nombreFuente['fuente'];
+
+                                                                    } else {
+
+                                                                        echo $noticia->getFuente();
+                                                                    }
+
+                                                                ?>
+                                                                    
+                                                            </span>
+                                                        </p>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td><span class="label2">Sección:</span> <span class="label3"><?php echo $noticia->getSeccion();?></span></td>
