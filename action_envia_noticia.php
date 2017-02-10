@@ -835,6 +835,7 @@ if($_POST['tipo_correo'] == 3)
                                           genero.descripcion AS genero,
                                           tendencia.descripcion AS tendencia_monitorista,
                                           ".$tabla_tipo.".url AS url,
+                                          ".$tabla_tipo.".is_social AS is_social,
 										  ".$tabla_tipo.".costo AS costo
                                     FROM
                                          noticia
