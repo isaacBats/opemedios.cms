@@ -782,12 +782,35 @@ if($_POST['tipo_correo'] == 3)
             case($_POST['id_tipo_fuente'] == 5):  // noticia de internet              
                 $tabla_tipo = "noticia_int";
                 $mensaje_archivo="Descarga Aqui";
+                 // Si la noticia es de tipo Red
+                 $arreglo_fuentes = [
+                                        ['id' => 1, 'fuente' => 'Facebook'], 
+                                        ['id' => 2, 'fuente' => 'Twitter'], 
+                                        ['id' => 3, 'fuente' => 'Youtube'], 
+                                        ['id' => 4, 'fuente' => 'Instagram'],
+                                    ];
+
+                //creamos un arreglo para mostrar el menu tipo de autor
+                $arreglo_tipo_autor = [
+                                        ['id' => 1, 'tipo_autor' => 'Youtuber'],
+                                        ['id' => 2, 'tipo_autor' => 'Facebook'],
+                                        ['id' => 3, 'tipo_autor' => 'Twitter'],
+                                        ['id' => 4, 'tipo_autor' => 'Instagram'],
+                                      ];
+
+                // Arreglo para el mostrar el menu de genero 
+                $arreglo_generos = [
+                                    ['id' => 1, 'genero' => 'Facebook'], 
+                                    ['id' => 2, 'genero' => 'Twitter'], 
+                                    ['id' => 3, 'genero' => 'Youtube'], 
+                                    ['id' => 4, 'genero' => 'Instagram'],
+                                   ];
 
                 require_once('Connections/bitacora.php');
                 $newInt = $pdo->query("SELECT * FROM noticia_int WHERE id_noticia = " . $_POST['id_noticia'])->fetch(\PDO::FETCH_ASSOC);
 
                 $qsector = ($newInt['is_social'] == 1) ? "" : "INNER JOIN sector ON (noticia.id_sector=sector.id_sector) ";  
-                $qsector_nombre = ($newInt['is_social'] == 1) ? "" : " sector.nombre AS sector, ";
+                $qsector_nombre = ($newInt['is_social'] == 1) ? "" : " noticia.id_sector AS id_sector, sector.nombre AS sector, ";
 
                 //hacemos consulta para la creacion del objeto NoticiaExtra
                 $base->execute_query("SELECT
@@ -800,7 +823,6 @@ if($_POST['tipo_correo'] == 3)
                                           noticia.id_tipo_fuente AS id_tipo_fuente,
                                           noticia.id_fuente AS id_fuente,
                                           noticia.id_seccion AS id_seccion,
-                                          noticia.id_sector AS id_sector,
                                           noticia.id_tipo_autor AS id_tipo_autor,
                                           noticia.id_genero AS id_genero,
                                           noticia.id_tendencia_monitorista AS id_tendencia_monitorista,
@@ -856,6 +878,32 @@ if($_POST['tipo_correo'] == 3)
                     }
                 }
 
+                
+                if($noticia->getIsSocial()) {
+                    $tipoAutor = array_filter($arreglo_tipo_autor, function ($autor) use ($noticia) {
+                        return $autor['id'] == $noticia->getId_tipo_autor();
+                    });
+
+                    $tipoAutor = current($tipoAutor)['tipo_autor'];
+
+                    $nombreFuente = array_filter($arreglo_fuentes, function ($fuente) use ($noticia) {
+                        return $fuente['id'] == $noticia->getId_fuente();
+                    });
+
+                    $nombreFuente = current($nombreFuente)['fuente'];
+
+                    $tipoGenero = array_filter($arreglo_generos, function ($genero) use ($noticia) {
+                        return $genero['id'] == $noticia->getId_genero();
+                    });
+
+                    $tipoGenero = current($tipoGenero)['genero'];
+                } else {
+                    $tipoAutor = $noticia->getTipo_autor();
+                    $nombreFuente = $noticia->getFuente();
+                    $tipoGenero = utf8_encode($noticia->getGenero());
+                }
+
+
                 $message = '<html>
         <head>
             <title>Operadora de Medios Informativos S.A. de C.V.</title>
@@ -891,11 +939,11 @@ if($_POST['tipo_correo'] == 3)
 												<font face="Tahoma" size="2" color="red">Costo/Beneficio: <b>$ '.number_format($noticia->getCosto(),2).'</b></font><br>
                                                 <table width="100%" border="0" cellspacing="2" cellpadding="2">
                                                     <tr bgcolor="#ffede1">
-                                                        <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Autor:</b> '.$noticia->getAutor().' ('.$noticia->getTipo_autor().')</td>
+                                                        <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Autor:</b> '.$noticia->getAutor().' ('.$tipoAutor.')</td>
                                                         <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Fecha:</b> '.$noticia->getFecha_larga().'</td>
                                                     </tr>
                                                     <tr bgcolor="#ffede1">
-                                                        <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Fuente:</b> '.$noticia->getFuente().'</td>
+                                                        <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Fuente:</b> '.$nombreFuente().'</td>
                                                         <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>URL:</b><a href="'.$noticia->getUrl().'">Ir a URL</a></td>
                                                     </tr>
                                                     <tr bgcolor="#ffede1">
@@ -903,7 +951,7 @@ if($_POST['tipo_correo'] == 3)
                                                         <td width="50%" rowspan="5" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Comentarios:</b> '.$noticia->getComentario().'</td>
                                                     </tr>
                                                     <tr bgcolor="#ffede1">
-                                                        <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Género:</b> '.utf8_encode($noticia->getGenero()).'</td>
+                                                        <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Género:</b> '.$tipoGenero.'</td>
                                                     </tr>
                                                     <tr bgcolor="#ffede1">
                                                         <td width="50%" valign="top">&nbsp;<font face="Tahoma" size="1"><b>Sector:</b> '.$noticia->getSector().'</td>

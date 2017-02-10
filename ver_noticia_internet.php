@@ -27,7 +27,7 @@ $tabla_tipo = "noticia_int";
 $carpeta_tipo="internet";
 
 $qsector = ($_GET['red'] == true) ? "" : "INNER JOIN sector ON (noticia.id_sector=sector.id_sector) ";  
-$qsector_nombre = ($_GET['red'] == true) ? "" : " sector.nombre AS sector, ";
+$qsector_nombre = ($_GET['red'] == true) ? "" : " noticia.id_sector AS id_sector, sector.nombre AS sector, ";
 
 //hacemos consulta para la creacion del objeto NoticiaExtra
 $base->execute_query("SELECT
@@ -41,7 +41,6 @@ $base->execute_query("SELECT
                           noticia.id_tipo_fuente AS id_tipo_fuente,
                           noticia.id_fuente AS id_fuente,
                           noticia.id_seccion AS id_seccion,
-                          noticia.id_sector AS id_sector,
                           noticia.id_tipo_autor AS id_tipo_autor,
                           noticia.id_genero AS id_genero,
                           noticia.id_tendencia_monitorista AS id_tendencia_monitorista,
