@@ -274,7 +274,8 @@ $base->close();
 								<table width="825" border="0">
                                         <tr>
                                             <td width="112">
-												<input name="id_noticia" type="hidden" id="id_noticia" value="<?php echo $noticia->getId();?>" />
+                                                <input name="id_noticia" type="hidden" id="id_noticia" value="<?php echo $noticia->getId();?>" />
+												<input name="is_social" type="hidden" value="<?= $_GET['red'] ?>" />
 												<input type="hidden" name="id_tipo_fuente" id="id_tipo_fuente" value="<?php echo $noticia->getId_tipo_fuente();?>"/>
 											</td>
                                             <td width="148" class="label3">Encabezado:</td>

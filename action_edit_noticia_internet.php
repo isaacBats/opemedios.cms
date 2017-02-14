@@ -14,6 +14,7 @@ $base = new OpmDB(genera_arreglo_BD());
 //iniciamos conexion
 $base->init();
 
+$is_social = $_POST['is_social'];
 //obtenemos los datos del formulario y se meten en un arreglo para el objeto NoticiaElectronico
 $datos_noticia = array("id_noticia"=>$_POST['id_noticia'],
                         "encabezado"=>$_POST['encabezado'],
@@ -25,11 +26,12 @@ $datos_noticia = array("id_noticia"=>$_POST['id_noticia'],
                         "id_tipo_fuente"=>$_POST['id_tipo_fuente'],
                         "id_fuente"=>$_POST['id_fuente'],
                         "id_seccion"=>$_POST['id_seccion'],
-                        "id_sector"=>$_POST['id_sector'],
+                        "id_sector"=> ($is_social) ? 0 : $_POST['id_sector'],
                         "id_tipo_autor"=>$_POST['id_tipo_autor'],
                         "id_genero"=>$_POST['id_genero'],
                         "id_tendencia_monitorista"=>$_POST['id_tendencia_monitorista'],
                         "url"=>$_POST['url'],
+                        "is_social"=> ($is_social) ? $_POST['is_social'] : 0,
 						"costo"=>$_POST['costo'],
 						"hora_publicacion"=>date("H:i:s",mktime($_POST['hora_hh'],$_POST['hora_mm'],$_POST['hora_ss'],1,1,2000))
 						);
@@ -42,6 +44,6 @@ $base->execute_query($noticia->SQL_EDIT_NOTICIA());
 
 $base->close();
 
-header("Location:ver_noticia_selector.php?id_noticia=".$noticia->getId()."&id_tipo_fuente=".$noticia->getId_tipo_fuente());
+header("Location:ver_noticia_selector.php?id_noticia=".$noticia->getId()."&id_tipo_fuente=".$noticia->getId_tipo_fuente()."&red=".$is_social);
 
 ?>
