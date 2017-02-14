@@ -10,7 +10,7 @@ $redireccion_editar = array(1=>"edit_noticia_electronico.php",
 
 $menu_item_editar = '<li><a class="MenuBarItemSubmenu" href="#">Datos de Noticia</a>
                          <ul>
-                             <li><a href="'.$redireccion_editar[$noticia->getId_tipo_fuente()].'?id_noticia='.$noticia->getId().'&id_tipo_fuente='.$noticia->getId_tipo_fuente().'">Editar Informacion</a></li>
+                             <li><a href="'.$redireccion_editar[$noticia->getId_tipo_fuente()].'?id_noticia='.$noticia->getId().'&id_tipo_fuente='.$noticia->getId_tipo_fuente().'&red='.$is_social.'">Editar Informacion</a></li>
                          </ul>
                      </li>';
 

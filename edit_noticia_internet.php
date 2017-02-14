@@ -28,6 +28,9 @@ $current_user = new Usuario($base->get_row_assoc());
 $tabla_tipo = "noticia_int";
 $carpeta_tipo="internet";
 
+$qsector = ($_GET['red'] == true) ? "" : "INNER JOIN sector ON (noticia.id_sector=sector.id_sector) ";  
+$qsector_nombre = ($_GET['red'] == true) ? "" : " noticia.id_sector AS id_sector, sector.nombre AS sector, ";
+
 
 //hacemos consulta para la creacion del objeto NoticiaExtra
 $base->execute_query("SELECT
@@ -41,15 +44,14 @@ $base->execute_query("SELECT
                           noticia.id_tipo_fuente AS id_tipo_fuente,
                           noticia.id_fuente AS id_fuente,
                           noticia.id_seccion AS id_seccion,
-                          noticia.id_sector AS id_sector,
                           noticia.id_tipo_autor AS id_tipo_autor,
                           noticia.id_genero AS id_genero,
                           noticia.id_tendencia_monitorista AS id_tendencia_monitorista,
                           noticia.id_usuario AS id_usuario,
                           fuente.nombre AS fuente,
-                          seccion.nombre AS seccion,
-                          sector.nombre AS sector,
-                          tipo_fuente.descripcion AS tipo_fuente,
+                          seccion.nombre AS seccion, ".
+                          $qsector_nombre .
+                          " tipo_fuente.descripcion AS tipo_fuente,
                           tipo_autor.descripcion AS tipo_autor,
                           genero.descripcion AS genero,
                           tendencia.descripcion AS tendencia_monitorista,
@@ -60,9 +62,9 @@ $base->execute_query("SELECT
                          noticia
                          INNER JOIN tipo_fuente ON (noticia.id_tipo_fuente=tipo_fuente.id_tipo_fuente)
                          INNER JOIN fuente ON (noticia.id_fuente=fuente.id_fuente)
-                         INNER JOIN seccion ON (noticia.id_seccion=seccion.id_seccion)
-                         INNER JOIN sector ON (noticia.id_sector=sector.id_sector)
-                         INNER JOIN tipo_autor ON (noticia.id_tipo_autor=tipo_autor.id_tipo_autor)
+                         INNER JOIN seccion ON (noticia.id_seccion=seccion.id_seccion) " .
+                         $qsector .
+                         " INNER JOIN tipo_autor ON (noticia.id_tipo_autor=tipo_autor.id_tipo_autor)
                          INNER JOIN genero ON (noticia.id_genero=genero.id_genero)
                          INNER JOIN tendencia ON (noticia.id_tendencia_monitorista=tendencia.id_tendencia)
                          INNER JOIN ".$tabla_tipo." ON (noticia.id_noticia=".$tabla_tipo.".id_noticia)
@@ -96,11 +98,13 @@ while($tipo_autor = $base->get_row_assoc())
 }
 
 //creamos un arreglo para mostrar el menu sector
-$base->execute_query("SELECT id_sector, nombre FROM sector WHERE activo = 1 ORDER BY nombre");
-$arreglo_sectores = array();
-while($sector = $base->get_row_assoc())
-{
-    $arreglo_sectores[$sector['id_sector']] = $sector["nombre"];
+if (!$_GET['red']) {
+    $base->execute_query("SELECT id_sector, nombre FROM sector WHERE activo = 1 ORDER BY nombre");
+    $arreglo_sectores = array();
+    while($sector = $base->get_row_assoc())
+    {
+        $arreglo_sectores[$sector['id_sector']] = $sector["nombre"];
+    }    
 }
 
 //creamos un arreglo para mostrar el menu genero
