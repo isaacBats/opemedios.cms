@@ -73,13 +73,7 @@ $base->execute_query("SELECT
 //creamos el objeto NoticiaElectronico con los datos que nos regrese la consulta
 $noticia = new NoticiaExtra($base->get_row_assoc(),5);
 
-//creamos un arreglo para mostrar las fuentes de medios impresos segun el tipo de noticia
-$base->execute_query("SELECT id_fuente, nombre FROM fuente WHERE id_tipo_fuente = ".$noticia->getId_tipo_fuente()." AND activo = 1 ORDER BY nombre");
-$arreglo_fuentes = array();
-while($fuente = $base->get_row_assoc())
-{
-    $arreglo_fuentes[$fuente['id_fuente']] = $fuente["nombre"];
-}
+
 
 //creamos un arreglo para mostrar las secciones de la fuente seleccionada inicialmente
 $base->execute_query("SELECT id_seccion, nombre FROM seccion WHERE id_fuente = ".$noticia->getId_fuente()." AND activo = 1 ORDER BY descripcion");
@@ -89,30 +83,62 @@ while($seccion = $base->get_row_assoc())
     $arreglo_secciones[$seccion['id_seccion']] = $seccion["nombre"];
 }
 
-//creamos un arreglo para mostrar el menu tipo de autor
-$base->execute_query("SELECT * FROM tipo_autor ORDER BY descripcion");
-$arreglo_tipo_autor = array();
-while($tipo_autor = $base->get_row_assoc())
-{
-    $arreglo_tipo_autor[$tipo_autor['id_tipo_autor']] = $tipo_autor["descripcion"];
-}
-
-//creamos un arreglo para mostrar el menu sector
 if (!$_GET['red']) {
+    //creamos un arreglo para mostrar las fuentes de medios impresos segun el tipo de noticia
+    $base->execute_query("SELECT id_fuente, nombre FROM fuente WHERE id_tipo_fuente = ".$noticia->getId_tipo_fuente()." AND activo = 1 ORDER BY nombre");
+    $arreglo_fuentes = array();
+    while($fuente = $base->get_row_assoc())
+    {
+        $arreglo_fuentes[$fuente['id_fuente']] = $fuente["nombre"];
+    }
+
+    //creamos un arreglo para mostrar el menu tipo de autor
+    $base->execute_query("SELECT * FROM tipo_autor ORDER BY descripcion");
+    $arreglo_tipo_autor = array();
+    while($tipo_autor = $base->get_row_assoc())
+    {
+        $arreglo_tipo_autor[$tipo_autor['id_tipo_autor']] = $tipo_autor["descripcion"];
+    }
+
+    //creamos un arreglo para mostrar el menu sector
     $base->execute_query("SELECT id_sector, nombre FROM sector WHERE activo = 1 ORDER BY nombre");
     $arreglo_sectores = array();
     while($sector = $base->get_row_assoc())
     {
         $arreglo_sectores[$sector['id_sector']] = $sector["nombre"];
-    }    
-}
+    }
 
-//creamos un arreglo para mostrar el menu genero
-$base->execute_query("SELECT * FROM genero ORDER BY descripcion");
-$arreglo_generos = array();
-while($genero = $base->get_row_assoc())
-{
-    $arreglo_generos[$genero['id_genero']] = $genero["descripcion"];
+    //creamos un arreglo para mostrar el menu genero
+    $base->execute_query("SELECT * FROM genero ORDER BY descripcion");
+    $arreglo_generos = array();
+    while($genero = $base->get_row_assoc())
+    {
+        $arreglo_generos[$genero['id_genero']] = $genero["descripcion"];
+    }    
+} else {
+    // Si la noticia es de tipo Red
+ $arreglo_fuentes = [
+                        ['id' => 1, 'fuente' => 'Facebook'], 
+                        ['id' => 2, 'fuente' => 'Twitter'], 
+                        ['id' => 3, 'fuente' => 'Youtube'], 
+                        ['id' => 4, 'fuente' => 'Instagram'],
+                    ];
+
+//creamos un arreglo para mostrar el menu tipo de autor
+$arreglo_tipo_autor = [
+                        ['id' => 1, 'tipo_autor' => 'Youtuber'],
+                        ['id' => 2, 'tipo_autor' => 'Facebook'],
+                        ['id' => 3, 'tipo_autor' => 'Twitter'],
+                        ['id' => 4, 'tipo_autor' => 'Instagram'],
+                      ];
+
+// Arreglo para el mostrar el menu de genero 
+$arreglo_generos = [
+                    ['id' => 1, 'genero' => 'Facebook'], 
+                    ['id' => 2, 'genero' => 'Twitter'], 
+                    ['id' => 3, 'genero' => 'Youtube'], 
+                    ['id' => 4, 'genero' => 'Instagram'],
+                   ];
 }
 
 //creamos un arreglo para mostrar el menu tendencia monitorista
@@ -160,7 +186,7 @@ $base->close();
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Editar Noticia Internet</title>
+        <title><?= ($_GET['red']) ? 'Editar Noticia Red Social' : 'Editar Noticia Internet' ?></title>
         <style type="text/css">
             <!--
             body {
@@ -233,7 +259,7 @@ $base->close();
                         </tr>
                         <tr valign="middle">
                             <td width="15" height="25">&nbsp;</td>
-                            <td width="533" height="25" class="label2">Noticias --&gt; <span class="label4">Editar Noticia de Internet</span></td>
+                            <td width="533" height="25" class="label2">Noticias --&gt; <span class="label4"><?= ($_GET['red']) ? 'Editar Noticia Red Social' : 'Editar Noticia Internet' ?></span></td>
                             <td width="452" height="25"><span class="label2">Bienvenido:</span> <span class="label1"><?php echo $current_user->get_nombre_completo();?></span></td>
                         </tr>
                     </table>
@@ -274,7 +300,11 @@ $base->close();
                                                     <select name="id_fuente" class="combo3" id="id_fuente" onchange="seleccion_fuente()">
                                                         <?php
                                                         foreach ($arreglo_fuentes as $value => $label){
-                                                            echo '<option value="'.$value.'"'; if($value == $noticia->getId_fuente()){echo 'selected="selected"';}  echo'>'.$label.'</option>';
+                                                            if ($_GET['red']) {
+                                                                echo '<option value="'.$label['id'].'"'; if($label['id'] == $noticia->getId_fuente()){echo 'selected="selected"';}  echo '>'.$label['fuente'].'</option>';
+                                                            } else {
+                                                                echo '<option value="'.$value.'"'; if($value == $noticia->getId_fuente()){echo 'selected="selected"';}  echo'>'.$label.'</option>';                                                                
+                                                            }
                                                         }
                                                         ?>
                                                     </select>
@@ -311,7 +341,11 @@ $base->close();
                                                     <select name="id_tipo_autor" class="combo3" id="id_tipo_autor">
                                                         <?php
                                                         foreach ($arreglo_tipo_autor as $value => $label){
-                                                            echo '<option value="'.$value.'"'; if($value == $noticia->getId_tipo_autor()){echo 'selected="selected"';}  echo'>'.utf8_encode($label).'</option>';
+                                                            if ($_GET['red']) {
+                                                                echo '<option value="'.$label['id'].'"'; if($label['id'] == $noticia->getId_tipo_autor()){echo 'selected="selected"';}  echo'>'.utf8_encode($label['tipo_autor']).'</option>';
+                                                            } else {                                                                
+                                                                echo '<option value="'.$value.'"'; if($value == $noticia->getId_tipo_autor()){echo 'selected="selected"';}  echo'>'.utf8_encode($label).'</option>';
+                                                            }
                                                         }
                                                         ?>
                                             </select>
@@ -325,13 +359,18 @@ $base->close();
                                                     <select name="id_genero" class="combo3" id="id_genero">
                                                         <?php
                                                         foreach ($arreglo_generos as $value => $label){
-                                                            echo '<option value="'.$value.'"'; if($value == $noticia->getId_genero()){echo 'selected="selected"';}  echo'>'.$label.'</option>';
+                                                            if($_GET['red']) {
+                                                                echo '<option value="'.$label['id'].'"'; if($label['id'] == $noticia->getId_genero()){echo 'selected="selected"';}  echo'>'.$label['genero'].'</option>';
+                                                            } else {
+                                                                echo '<option value="'.$value.'"'; if($value == $noticia->getId_genero()){echo 'selected="selected"';}  echo'>'.$label.'</option>';                                                                
+                                                            }
                                                         }
                                                         ?>
                                                     </select>
                                             </label></td>
                                             <td>&nbsp;</td>
                                         </tr>
+                                        <?php if(!$_GET['red']): ?>
                                         <tr>
                                             <td>&nbsp;</td>
                                             <td class="label3">Sector:</td>
@@ -346,6 +385,7 @@ $base->close();
                                             </label></td>
                                             <td>&nbsp;</td>
                                         </tr>
+                                        <?php endif; ?>
                                         <tr>
                                             <td>&nbsp;</td>
                                             <td height="28" class="label3">Fecha:</td>
