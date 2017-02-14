@@ -190,7 +190,7 @@ $arreglo_generos = [
                         </tr>
                         <tr valign="middle">
                             <td width="15" height="25">&nbsp;</td>
-                            <td width="533" height="25" class="label2">Noticias --&gt; <span class="label4">Ver Noticia de Internet</span></td>
+                            <td width="533" height="25" class="label2">Noticias --&gt; <span class="label4"><?= ($is_social) ? 'Ver Noticia de Red Social' : 'Ver Noticia de Internet' ?></span></td>
                             <td width="452" height="25"><span class="label2">Bienvenido:</span> <span class="label1"><?php echo $current_user->get_nombre_completo();?></span></td>
                         </tr>
                     </table>
