@@ -613,7 +613,7 @@
                                      "id_tipo_fuente"=>$_POST['id_tipo_fuente'],
                                      "id_fuente"=>$_POST['id_fuente'],
                                      "id_seccion"=>$_POST['id_seccion'],
-                                     "id_sector"=> isset($_POST['id_sector']) ? $_POST['id_sector'] : 0,
+                                     "id_sector"=> isset($_POST['id_sector']) ? $_POST['id_sector'] : 49,
                                      "id_tipo_autor"=>$_POST['id_tipo_autor'],
                                      "id_genero"=>$_POST['id_genero'],
                                      "id_tendencia_monitorista"=>$_POST['id_tendencia_monitorista'],
